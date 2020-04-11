@@ -1,0 +1,16 @@
+Temp Aussen		[°C]
+Temp Innen		[°C]
+
+Luftdruck		[mbar]
+Luftfeuchtigkeit	[%]
+
+
+Position GCS		[lat/long]
+Höhe GCS		[m]
+
+
+Höhe			[m]
+Position 		[lat/long]
+Groundspeed 		[m/s]
+Steiggeschwindigkeit 	[m/s]
+(Wegaufzeichnung)	[-]
