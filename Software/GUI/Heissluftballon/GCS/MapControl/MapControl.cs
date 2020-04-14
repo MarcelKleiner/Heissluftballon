@@ -38,13 +38,13 @@ namespace GCS.MapControl
 
         private void AddMouseListener()
         {
-          //  main.rbSatellitCard.Checked += new RoutedEventHandler(this.RbSatellitCard_Checked);
-          //  main.rbStreetCard.Checked += new RoutedEventHandler(this.RbStreetCard_Checked);
+            main.rbSatelliteMap.Checked += new RoutedEventHandler(this.RbSatellitCard_Checked);
+            main.rbRoadMap.Checked += new RoutedEventHandler(this.RbStreetCard_Checked);
         }
 
         private void RbSatellitCard_Checked(object sender, RoutedEventArgs e)
         {
-            //    main.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
+                main.gmap.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
         }
 
         private void RbStreetCard_Checked(object sender, RoutedEventArgs e)

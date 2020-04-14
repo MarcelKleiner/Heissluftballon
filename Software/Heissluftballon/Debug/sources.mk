@@ -27,7 +27,10 @@ OBJCOPY_BIN :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Src/AppMain \
 Core/Src/FXPS7115D4 \
+Core/Src/GPS \
+Core/Src/Model \
 Core/Src/SHT21 \
 Core/Src \
 Core/Startup \

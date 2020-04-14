@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx">
+      <HintPath>..\..\..\..\..\MatMagSoftware\02_Software\MatMag\MatMag\bin\Debug\ControlzEx.dll</HintPath>
+    </Reference>
     <Reference Include="GMap.NET.WindowsPresentation">
       <HintPath>..\Heissluftballon\bin\Debug\GMap.NET.WindowsPresentation.dll</HintPath>
     </Reference>
@@ -44,8 +47,16 @@
     <Reference Include="LiveCharts.Wpf">
       <HintPath>..\Heissluftballon\bin\Debug\LiveCharts.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\..\..\..\..\MatMagSoftware\02_Software\MatMag\MatMag\bin\Debug\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\..\..\..\..\MatMagSoftware\02_Software\MatMag\MatMag\bin\Debug\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +75,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="SerialPort\SerialPortHandler.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +85,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GCS_UI\GCSUI.cs" />
+    <Compile Include="HLB_UI\HLBUI.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

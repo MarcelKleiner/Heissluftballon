@@ -21,3 +21,8 @@ C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\
 C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\LiveCharts.Wpf.dll
 C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\LiveCharts.pdb
 C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\ControlzEx.dll
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\MahApps.Metro.dll
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\ControlzEx.pdb
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\MahApps.Metro.pdb

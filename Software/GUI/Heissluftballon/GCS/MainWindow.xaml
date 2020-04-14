@@ -6,21 +6,170 @@
         xmlns:local="clr-namespace:GCS"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="GCS.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="961.5" Width="1185.5">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="383*"/>
             <ColumnDefinition Width="409*"/>
         </Grid.ColumnDefinitions>
-
-
-        <Wpf:CartesianChart x:Name="cChart" Height="222" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Grid Grid.Column="1" Margin="0">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="169*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="56*"/>
             </Grid.RowDefinitions>
-            <WindowsPresentation:GMapControl x:Name="gmap" Margin="0"/>
+            <WindowsPresentation:GMapControl x:Name="gmap" Margin="5"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <RadioButton x:Name="rbRoadMap" Content="road map" Grid.Column="2" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" IsChecked="True"/>
+                <RadioButton x:Name="rbSatelliteMap" Content="satellite map" Margin="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            </Grid>
+            <Rectangle Fill="#FF7C7CFF" Height="4" Margin="0" Grid.Row="2" Stroke="#FF7C7CFF" VerticalAlignment="Top"/>
+            <Grid Margin="0,4,0,0" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtCMD" Margin="5" TextWrapping="Wrap" Text="*********** GCS *********** " Background="Black" Foreground="#FF05D146"/>
+                <Grid Grid.Column="1" Margin="0,0,5,5" Height="218">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="22*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="65"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="60">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="31*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="23*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox x:Name="cbComPort" Margin="3,5,5,5" BorderBrush="White" Foreground="Black" Grid.Row="1" Grid.ColumnSpan="2">
+                            <ComboBox.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </ComboBox.Background>
+                            <Button/>
+                        </ComboBox>
+                        <Button x:Name="cmdDisconnect" Content="Disconnect" Margin="3" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Button x:Name="cmdRefresh" Content="Refresh " Margin="3" Grid.Column="2" Grid.Row="1"/>
+                        <Button x:Name="cmdConnect" Content="Connect" Margin="3" Grid.Row="2"/>
+                    </Grid>
+                    <Label x:Name="label4" Content="Communication status" Margin="0" Grid.Row="1"/>
+                    <Label x:Name="label4_Copy" Content="GPS - GCS" Margin="0" Grid.Row="2"/>
+                    <Label x:Name="label4_Copy1" Content="GPS - Target" Margin="0" Grid.Row="3"/>
+                    <Grid Grid.Column="1" Margin="0" Grid.Row="1" Background="White">
+                        <Label x:Name="lblConnStatus" Content="Connectino Lost" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Red"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="2" Background="White">
+                        <Label x:Name="lblGPSGCS" Content="GPS ON" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF00FF74"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="3" Background="White">
+                        <Label x:Name="lblGPSTarget" Content="GPS OFF" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Red"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="177*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="448*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="101"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
+            <Wpf:CartesianChart x:Name="ccAltitude" AnimationsSpeed="0" TooltipTimeout="0:0:0.001" Grid.Row="1" Margin="20,0"/>
+            <Label x:Name="label" Content="Target Device Data" HorizontalAlignment="Center" Margin="192,2" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Height="36" Width="186"/>
+            <Grid Margin="0" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Wpf:Gauge x:Name="gGroundSpeed" Grid.Row="1" Grid.Column="1" ToColor="Yellow" To="30" FromColor="#FF00B71D" Value="18"/>
+                <Label x:Name="label1" Content="Groundspeed [km/h]" Margin="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Grid.Column="1"/>
+                <Label x:Name="label1_Copy" Content="Climb rate [m/s]" Margin="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Grid.Column="3"/>
+                <Wpf:Gauge x:Name="gClimbRate" Grid.Row="1" Grid.Column="3" ToColor="Yellow" FromColor="#FF00B71D" Value="4" To="10" Uid="a"/>
+            </Grid>
+            <Grid Margin="0,15,0,0" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="161*"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="157*"/>
+                    <RowDefinition Height="26"/>
+                </Grid.RowDefinitions>
+                <Wpf:CartesianChart x:Name="ccOutsideTemp" Margin="5" AnimationsSpeed="0" Grid.Row="1"/>
+                <Wpf:CartesianChart x:Name="ccInsideTemp" Margin="5" AnimationsSpeed="0" Grid.Column="1" Grid.Row="1"/>
+                <Rectangle Grid.ColumnSpan="2" Fill="#FF7C7CFF" Height="1" Stroke="#FF7C7CFF" VerticalAlignment="Top"/>
+                <Label x:Name="label2" Content="Outside temperature [°C]" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label x:Name="label2_Copy" Content="Inside temperature [°C]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
+                <Label x:Name="label2_Copy1" Content="Humidity [%]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"/>
+                <Label x:Name="label2_Copy2" Content="Air pressure [mbar]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+                <Wpf:CartesianChart x:Name="ccHumidity" Margin="5" AnimationsSpeed="0" Grid.Row="4"/>
+                <Wpf:CartesianChart x:Name="ccAirPressure" Margin="5" AnimationsSpeed="0" Grid.Row="4" Grid.Column="1"/>
+                <Rectangle Grid.ColumnSpan="2" Fill="#FF7C7CFF" Height="1" Margin="0" Grid.Row="2" Stroke="#FF7C7CFF" VerticalAlignment="Bottom"/>
+                <Rectangle Grid.ColumnSpan="2" Fill="Black" Height="3" Margin="0,-3" Grid.Row="5" Stroke="Black" VerticalAlignment="Bottom"/>
+                <Label x:Name="lblHumidity" Content="85.3%" HorizontalAlignment="Center" Margin="0" Grid.Row="5" VerticalAlignment="Center"/>
+                <Label x:Name="lblHumidity_Copy" Content="1024 mbar" HorizontalAlignment="Center" Margin="0" Grid.Row="5" VerticalAlignment="Center" Grid.Column="1"/>
+                <Label x:Name="lblHumidity_Copy1" Content="25.3 °C" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center"/>
+                <Label x:Name="lblHumidity_Copy2" Content="68.9 °C" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"/>
+            </Grid>
+            <Label x:Name="label_Copy" Content="GCS Data" HorizontalAlignment="Center" Margin="236,2,236,1" VerticalAlignment="Center" Grid.Row="4" FontSize="20" FontWeight="Bold" Height="37" Width="98"/>
+            <Grid Margin="0" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Wpf:Gauge x:Name="gGroundSpeedGCS" Grid.Row="1" Grid.Column="1" ToColor="Yellow" To="120" FromColor="#FF00B71D" Value="18"/>
+                <Label x:Name="label3" Content="Groundspeed [km/h]" Margin="5,0" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Grid.Column="1"/>
+                <Label x:Name="label1_Copy1" Content="height difference [m]" Margin="5,0" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Grid.Column="3"/>
+                <Wpf:Gauge x:Name="gHeightDifference" Grid.Row="1" Grid.Column="3" ToColor="#FF3386FE" FromColor="#FF3386FE" Value="800" To="3000" Uid="a"/>
+                <Label x:Name="label1_Copy2" Content="Distance difference [m]" Margin="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center" Grid.Column="5"/>
+                <Wpf:Gauge x:Name="gDistanceDifference" Grid.Row="1" Grid.Column="5" ToColor="#FF3386FE" FromColor="#FF3386FE" Value="1500" To="5000"/>
+            </Grid>
         </Grid>
 
     </Grid>
