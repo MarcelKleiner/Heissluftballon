@@ -7,6 +7,9 @@
 
 #include "i2c.h"
 #include "stm32l4xx_hal.h"
+#include "../config/I2C_Config.h"
+
+#include "../Model/Model.h"
 
 
 #ifndef SRC_FXPS7115D4_FXPS7115_H_
@@ -42,6 +45,11 @@ public:
 	uint32_t fxpReadTemp(void);
 
 private:
+	HAL_StatusTypeDef writeByte(uint8_t addr);
+
+
+	Model* model;
+
 
 };
 

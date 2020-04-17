@@ -36,6 +36,9 @@ public:
 	void setTempOutside(uint16_t data);
 	uint16_t getTempOutside(void);
 
+	void setTempOutside8Bit(uint8_t data);
+	uint8_t getTempOutside8Bit(void);
+
 	void setTempInside(uint16_t data);
 	uint16_t getTempInsed(void);
 
@@ -46,6 +49,7 @@ private:
 	uint16_t humidity;
 	uint16_t pressure;
 	uint16_t tempOutisde;
+	uint8_t tempOutisde8Bit;
 	uint16_t tempInside;
 
 

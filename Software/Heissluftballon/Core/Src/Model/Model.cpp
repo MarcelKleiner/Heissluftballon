@@ -16,16 +16,19 @@ Model::Model() {
 	 humidity = 0;
 	 pressure = 0;
 	 tempOutisde = 0;
+	 tempOutisde8Bit = 0;
 	 tempInside = 0;
 }
 
 
 //get/set GPS_GCS Data
 void Model::Model::setGPS_GCS(char* data){
-	strncpy(gpsGCS, data, GPS_DATA_SIZE);
+	//not implemented in Device
+	//strncpy(gpsGCS, data, GPS_DATA_SIZE);
 }
 char* Model::getGPS_GCS(void){
-	return gpsGCS;
+	//not implemented in Device
+	//return gpsGCS;
 }
 
 //get/set GPS_Device Data
@@ -58,6 +61,15 @@ void Model::setTempOutside(uint16_t data){
 }
 uint16_t Model::getTempOutside(void){
 	return tempOutisde;
+}
+
+//get/set TempOutside from Pressure Sensor (Res 8Bit)
+void  Model::setTempOutside8Bit(uint8_t data){
+	tempOutisde8Bit = data;
+}
+
+uint8_t  Model::getTempOutside8Bit(){
+	return tempOutisde8Bit;
 }
 
 //get/set TempInside

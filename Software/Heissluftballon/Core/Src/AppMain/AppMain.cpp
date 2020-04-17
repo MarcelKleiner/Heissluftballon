@@ -19,7 +19,11 @@ AppMain::AppMain() {
 
 }
 
+void AppMain::mainProg(){
+	while(1){
 
+	}
+}
 
 
 

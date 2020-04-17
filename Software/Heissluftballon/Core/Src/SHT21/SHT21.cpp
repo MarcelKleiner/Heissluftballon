@@ -17,13 +17,11 @@ void SHT21::initSHT21(){
 }
 
 HAL_StatusTypeDef SHT21::writeByte(uint8_t addr){
-
 	uint8_t txBuffer[1];
 	txBuffer[0] = addr;
-
 	return(HAL_I2C_Master_Transmit(&hi2c1,SHT21_SLAVE_ADDR,(uint8_t*)txBuffer,1,I2C_Timeout));
-
 }
+
 
 uint32_t SHT21::readSHT21Temp(){
 	uint8_t buffer[2];

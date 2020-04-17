@@ -7,14 +7,12 @@
 
 #include "i2c.h"
 #include "stm32l4xx_hal.h"
+#include "../config/I2C_Config.h"
 
 
 #ifndef SRC_SHT21_SHT21_H_
 #define SRC_SHT21_SHT21_H_
 
-
-/*General config*/
-#define I2C_Timeout				100
 
 
 /*STH21 Temp/Humidity register config*/

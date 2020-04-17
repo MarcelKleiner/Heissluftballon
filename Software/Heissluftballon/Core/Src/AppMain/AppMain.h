@@ -20,9 +20,9 @@ class AppMain {
 public:
 	AppMain();
 
+	void mainProg(void);
 
-
-
+private:
 
 
 };
