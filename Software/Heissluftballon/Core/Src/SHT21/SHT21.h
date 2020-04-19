@@ -9,6 +9,8 @@
 #include "stm32l4xx_hal.h"
 #include "../config/I2C_Config.h"
 
+#include "../Model/Model.h"
+
 
 #ifndef SRC_SHT21_SHT21_H_
 #define SRC_SHT21_SHT21_H_
@@ -16,7 +18,7 @@
 
 
 /*STH21 Temp/Humidity register config*/
-#define SHT21_SLAVE_ADDR		0x80
+#define SHT21_SLAVE_ADDR		0x40
 
 #define SHT21_TEMP_REG			0xE3
 #define SHT21_HUMIDITY_REG		0xE5
@@ -28,13 +30,16 @@
 
 class SHT21 {
 public:
-	SHT21();
+	SHT21(Model *model);
 	void initSHT21(void);
 	uint32_t readSHT21Temp(void);
 	uint32_t readSHT21Humidity(void);
 
 
 private:
+
+	Model *model;
+
 	HAL_StatusTypeDef writeByte(uint8_t addr);
 };
 

@@ -10,8 +10,8 @@
 Model::Model() {
 
 	for(uint8_t counter = 0; counter<GPS_DATA_SIZE; counter++){
-		 gpsGCS[counter] = 0;
-		 gpsDevice[counter] = 0;
+		 gpsGCS[counter] = 11;
+		 gpsDevice[counter] = 22;
 	}
 	 humidity = 0;
 	 pressure = 0;
@@ -28,7 +28,7 @@ void Model::Model::setGPS_GCS(char* data){
 }
 char* Model::getGPS_GCS(void){
 	//not implemented in Device
-	//return gpsGCS;
+	return gpsGCS;
 }
 
 //get/set GPS_Device Data
@@ -49,7 +49,7 @@ uint16_t Model::getHumidity(void){
 
 //get/set Pressure
 void Model::setPressure(uint16_t data){
-	pressure = data;
+	pressure = (data -32768);
 }
 uint16_t Model::getPressure(void){
 	return pressure;

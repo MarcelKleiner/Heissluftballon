@@ -1,0 +1,3 @@
+USBCom.cpp:10:1:USB_Com::USB_Com()	16	static
+USBCom.cpp:16:6:bool USB_Com::usbTransmit(uint8_t*, uint8_t)	32	static
+USBCom.cpp:28:6:void USB_Com::usbReceive(uint8_t*)	16	static

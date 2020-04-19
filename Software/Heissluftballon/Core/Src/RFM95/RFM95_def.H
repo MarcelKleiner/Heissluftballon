@@ -433,12 +433,44 @@
 #define RF_RXBW_MANT_20				0x08
 #define RF_RXBW_MANT_24				0x10
 
-#define RF_RXBW_EXP_50000
-#define RF_RXBW_EXP_
-#define RF_RXBW_EXP_
+#define RF_RXBW_EXP_0				0x00
+#define RF_RXBW_EXP_1				0x01
+#define RF_RXBW_EXP_2				0x02
+#define RF_RXBW_EXP_3				0x03
+#define RF_RXBW_EXP_4				0x04
+#define RF_RXBW_EXP_5				0x05
+#define RF_RXBW_EXP_6				0x06
+#define RF_RXBW_EXP_7				0x07
 
+// REG_DIO_MAPPING_1 (0x40) DIO 0-3
+#define RF_DIO_0_TX_PACKETSENT		0x00
+#define RF_DIO_0_TX_PAYLOADRDY		0x00
+#define RF_DIO_0_RX_CRCOK			0x40
+#define RF_DIO_0_ALL_TEMP_LOWBAT	0xC0
 
+#define RF_DIO_1_ALL_FIFOLEVEL		0x00
+#define RF_DIO_1_ALL_FIFOEMPTY		0x10
+#define RF_DIO_1_ALL_FIFOFULL		0x20
 
+#define RF_DIO_2_ALL_FIFOFULL		0x00
+#define RF_DIO_2_RX_RXRDY			0x04
+#define RF_DIO_2_RX_TIMEOUT			0x08
+#define RF_DIO_2_RX_SYNCADDR		0x0C
+#define RF_DIO_2_TX_FIFOFULL		0x0C
+
+// REG_DIO_MAPPING_2 (0x41) DIO 4-5
+#define RF_DIO_4_ALL_TEMP_LOWBAT	0x00
+#define RF_DIO_4_ALL_PLLLOCK		0x40
+#define RF_DIO_4_RX_TIMEOUT			0x80
+#define RF_DIO_4_RX_PREAMBLEDETECT	0xC0
+
+#define RF_DIO_5_ALL_CLKOUT			0x00
+#define RF_DIO_5_TX_RX_PLLLOCK		0x10
+#define RF_DIO_5_TX_RX_DATA			0x20
+#define RF_DIO_5_ALL_MODERDX		0x30
+
+#define RF_DIO_PREAMBLE_RSSI		0x01
+#define RF_DIO_PREAMBLE_INT			0x00
 
 
 
@@ -486,10 +518,6 @@
 #define RF_RMC2_AGCAUTOOFF			0x00	//default
 
 
-#define RF_RMC2_
-#define RF_RMC2_
-#define RF_RMC2_
-#define RF_RMC2_
 
 
 

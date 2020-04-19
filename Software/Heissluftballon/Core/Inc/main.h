@@ -87,7 +87,7 @@ void Error_Handler(void);
 #define RFM_DIO0_Pin GPIO_PIN_7
 #define RFM_DIO0_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
+void UART_RX_CpltCallback(UART_HandleTypeDef *huart);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

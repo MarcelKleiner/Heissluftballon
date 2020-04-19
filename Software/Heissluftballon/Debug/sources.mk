@@ -30,8 +30,11 @@ SUBDIRS := \
 Core/Src/AppMain \
 Core/Src/FXPS7115D4 \
 Core/Src/GPS \
+Core/Src/MAX31865 \
 Core/Src/Model \
+Core/Src/RFM95 \
 Core/Src/SHT21 \
+Core/Src/USB \
 Core/Src \
 Core/Startup \
 Drivers/STM32L4xx_HAL_Driver/Src \

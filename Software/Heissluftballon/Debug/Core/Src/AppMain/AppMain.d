@@ -39,7 +39,29 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
  ../Core/Src/AppMain/../GPS/GPS.h ../Core/Inc/usart.h ../Core/Inc/main.h \
  ../Core/Src/AppMain/../GPS/../config/Config.h \
  ../Core/Src/AppMain/../GPS/../Model/Model.h \
- ../Core/Src/AppMain/../GPS/../Model/../config/Config.h
+ ../Core/Src/AppMain/../GPS/../Model/../config/Config.h \
+ ../Core/Src/AppMain/../SHT21/SHT21.h ../Core/Inc/i2c.h \
+ ../Core/Src/AppMain/../SHT21/../config/I2C_Config.h \
+ ../Core/Src/AppMain/../SHT21/../Model/Model.h \
+ ../Core/Src/AppMain/../SHT21/../Model/../config/Config.h \
+ ../Core/Src/AppMain/../FXPS7115D4/FXPS7115.h \
+ ../Core/Src/AppMain/../FXPS7115D4/../config/I2C_Config.h \
+ ../Core/Src/AppMain/../FXPS7115D4/../Model/Model.h \
+ ../Core/Src/AppMain/../FXPS7115D4/../Model/../config/Config.h \
+ ../Core/Src/AppMain/../RFM95/RFM95.h \
+ ../Core/Src/AppMain/../MAX31865/MAX31865TEMP.h ../Core/Inc/spi.h \
+ ../Core/Src/AppMain/../MAX31865/../Model/Model.h \
+ ../Core/Src/AppMain/../MAX31865/../Model/../config/Config.h \
+ ../Core/Src/AppMain/../USB/USBCom.h ../USB_DEVICE/App/usb_device.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
+ ../USB_DEVICE/App/usbd_cdc_if.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 
 ../Core/Src/AppMain/AppMain.h:
 
@@ -128,3 +150,55 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
 ../Core/Src/AppMain/../GPS/../Model/Model.h:
 
 ../Core/Src/AppMain/../GPS/../Model/../config/Config.h:
+
+../Core/Src/AppMain/../SHT21/SHT21.h:
+
+../Core/Inc/i2c.h:
+
+../Core/Src/AppMain/../SHT21/../config/I2C_Config.h:
+
+../Core/Src/AppMain/../SHT21/../Model/Model.h:
+
+../Core/Src/AppMain/../SHT21/../Model/../config/Config.h:
+
+../Core/Src/AppMain/../FXPS7115D4/FXPS7115.h:
+
+../Core/Src/AppMain/../FXPS7115D4/../config/I2C_Config.h:
+
+../Core/Src/AppMain/../FXPS7115D4/../Model/Model.h:
+
+../Core/Src/AppMain/../FXPS7115D4/../Model/../config/Config.h:
+
+../Core/Src/AppMain/../RFM95/RFM95.h:
+
+../Core/Src/AppMain/../MAX31865/MAX31865TEMP.h:
+
+../Core/Inc/spi.h:
+
+../Core/Src/AppMain/../MAX31865/../Model/Model.h:
+
+../Core/Src/AppMain/../MAX31865/../Model/../config/Config.h:
+
+../Core/Src/AppMain/../USB/USBCom.h:
+
+../USB_DEVICE/App/usb_device.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+
+../USB_DEVICE/Target/usbd_conf.h:
+
+../Core/Inc/main.h:
+
+../USB_DEVICE/App/usbd_cdc_if.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:

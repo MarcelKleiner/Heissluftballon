@@ -34,7 +34,10 @@ Core/Src/SHT21/SHT21.o: ../Core/Src/SHT21/SHT21.cpp \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h \
+ ../Core/Src/SHT21/../config/I2C_Config.h \
+ ../Core/Src/SHT21/../Model/Model.h \
+ ../Core/Src/SHT21/../Model/../config/Config.h
 
 ../Core/Src/SHT21/SHT21.h:
 
@@ -111,3 +114,9 @@ Core/Src/SHT21/SHT21.o: ../Core/Src/SHT21/SHT21.cpp \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h:
+
+../Core/Src/SHT21/../config/I2C_Config.h:
+
+../Core/Src/SHT21/../Model/Model.h:
+
+../Core/Src/SHT21/../Model/../config/Config.h:

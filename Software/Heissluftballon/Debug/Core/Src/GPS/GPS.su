@@ -1,4 +1,4 @@
 GPS.cpp:14:1:GPS::GPS(Model*)	16	static
 GPS.cpp:28:6:void GPS::init()	24	static
-GPS.cpp:45:7:char* GPS::getGPSData()	16	static
-GPS.cpp:58:6:void GPS::gpsInterrupt(UART_HandleTypeDef*)	24	static
+GPS.cpp:44:7:char* GPS::getGPSData()	16	static
+GPS.cpp:57:6:void GPS::gpsInterrupt(uint8_t)	24	static

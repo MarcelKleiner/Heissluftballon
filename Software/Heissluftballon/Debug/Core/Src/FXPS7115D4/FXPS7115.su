@@ -1,1 +1,5 @@
-FXPS7115.cpp:10:1:FXPS7115::FXPS7115()	16	static
+FXPS7115.cpp:12:1:FXPS7115::FXPS7115(Model*)	16	static
+FXPS7115.cpp:19:6:void FXPS7115::fxpInit()	16	static
+FXPS7115.cpp:24:19:HAL_StatusTypeDef FXPS7115::writeByte(uint8_t, uint8_t)	32	static
+FXPS7115.cpp:32:6:bool FXPS7115::fxpReadPressure()	40	static
+FXPS7115.cpp:44:6:bool FXPS7115::fxpReadTemp()	40	static

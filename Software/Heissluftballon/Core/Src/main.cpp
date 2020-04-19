@@ -28,12 +28,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "AppMain/AppMain.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+AppMain appMain;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -43,6 +43,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
+extern UART_HandleTypeDef huart2;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -59,7 +60,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t rxData[1] = {0};
 /* USER CODE END 0 */
 
 /**
@@ -96,6 +97,12 @@ int main(void)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
 
+
+  HAL_UART_MspInit(&huart2);		//UART init
+  HAL_SPI_MspInit(&hspi1);		//SPI init
+  HAL_I2C_MspInit(&hi2c1);		//I2C init
+  HAL_UART_Receive_IT(&huart2, rxData, 1);
+  appMain.mainProg();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -167,6 +174,22 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+
+/**
+  * @brief  Rx Transfer completed callback.
+  * @param  huart UART handle.
+  * @retval None
+  */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  /* Prevent unused argument(s) compilation warning */
+	HAL_UART_Receive_IT(&huart2, rxData, 1);
+	appMain.gps.gpsInterrupt(rxData[0]);
+
+  /* NOTE : This function should not be modified, when the callback is needed,
+            the HAL_UART_RxCpltCallback can be implemented in the user file.
+   */
+}
 /* USER CODE END 4 */
 
 /**

@@ -1,0 +1,8 @@
+RFM95.cpp:10:1:RFM95::RFM95()	16	static
+RFM95.cpp:15:6:void RFM95::initRFM()	16	static
+RFM95.cpp:19:6:void RFM95::writeReg(uint8_t, uint8_t)	16	static
+RFM95.cpp:23:9:uint8_t RFM95::readReg(uint8_t)	16	static
+RFM95.cpp:27:6:void RFM95::writeFIFO()	16	static
+RFM95.cpp:31:6:void RFM95::readFIFO()	16	static
+RFM95.cpp:35:6:void RFM95::setTransmitDirection(RFM95::RFM_DIR)	16	static
+RFM95.cpp:39:6:void RFM95::setMode(RFM95::MODE)	16	static

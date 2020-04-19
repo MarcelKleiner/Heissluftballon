@@ -1,5 +1,5 @@
-SHT21.cpp:10:1:SHT21::SHT21()	16	static
+SHT21.cpp:10:1:SHT21::SHT21(Model*)	16	static
 SHT21.cpp:15:6:void SHT21::initSHT21()	16	static
 SHT21.cpp:19:19:HAL_StatusTypeDef SHT21::writeByte(uint8_t)	32	static
-SHT21.cpp:28:10:uint32_t SHT21::readSHT21Temp()	32	static
-SHT21.cpp:36:10:uint32_t SHT21::readSHT21Humidity()	32	static
+SHT21.cpp:26:10:uint32_t SHT21::readSHT21Temp()	32	static
+SHT21.cpp:35:10:uint32_t SHT21::readSHT21Humidity()	32	static

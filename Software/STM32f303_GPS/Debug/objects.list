@@ -1,4 +1,5 @@
 "Core/Src/GPS/GPS.o"
+"Core/Src/Model/Model.o"
 "Core/Src/gpio.o"
 "Core/Src/main.o"
 "Core/Src/stm32f3xx_hal_msp.o"

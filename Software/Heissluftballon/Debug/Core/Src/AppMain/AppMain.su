@@ -1,3 +1,2 @@
-AppMain.cpp:16:1:AppMain::AppMain()	16	static
-AppMain.cpp:20:1:void __static_initialization_and_destruction_0(int, int)	16	static
-AppMain.cpp:20:1:cpp)	8	static
+AppMain.cpp:15:1:AppMain::AppMain()	16	static
+AppMain.cpp:21:6:void AppMain::mainProg()	216	static

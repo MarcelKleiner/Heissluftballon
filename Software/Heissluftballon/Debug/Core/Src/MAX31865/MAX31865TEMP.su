@@ -1,0 +1,9 @@
+MAX31865TEMP.cpp:12:1:MAX31865_TEMP::MAX31865_TEMP(Model*)	16	static
+MAX31865TEMP.cpp:17:6:void MAX31865_TEMP::init(uint8_t)	24	static
+MAX31865TEMP.cpp:30:6:bool MAX31865_TEMP::readTemp()	48	static
+MAX31865TEMP.cpp:74:6:void MAX31865_TEMP::MAX31865_read(uint8_t, uint8_t*, uint8_t)	32	static
+MAX31865TEMP.cpp:92:6:void MAX31865_TEMP::MAX31865_write(uint8_t, uint8_t)	24	static
+MAX31865TEMP.cpp:114:6:void MAX31865_TEMP::enableBias(uint8_t)	24	static
+MAX31865TEMP.cpp:135:6:void MAX31865_TEMP::autoConvert(uint8_t)	24	static
+MAX31865TEMP.cpp:155:6:void MAX31865_TEMP::setWires(uint8_t)	24	static
+MAX31865TEMP.cpp:174:6:void MAX31865_TEMP::single_shot()	24	static

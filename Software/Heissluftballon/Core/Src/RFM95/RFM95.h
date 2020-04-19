@@ -8,6 +8,8 @@
 #ifndef SRC_RFM95_RFM95_H_
 #define SRC_RFM95_RFM95_H_
 
+#include "stm32l4xx_hal.h"
+#include "RFM95_def.H"
 
 
 class RFM95 {
@@ -15,8 +17,8 @@ public:
 	RFM95();
 
 	enum RFM_DIR{
-		TX,
-		RX
+		DIR_TX,
+		DIR_RX
 	};
 
 	typedef enum MODE{

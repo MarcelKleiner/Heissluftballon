@@ -26,7 +26,7 @@
 #define FXP_DEVSTAT3_REG		0x04
 #define FXP_TEMPERATURE_REG		0x0E
 
-#define FXP_SNSDATA0_L_REG		0x63	//READ SNSDATA0_L BEVORE SNSDATA0_H
+#define FXP_SNSDATA0_L_REG		0x62	//READ SNSDATA0_L BEVORE SNSDATA0_H
 #define FXP_SNSDATA0_H_REG		0x63
 
 #define FXP_SNSDATA1_L_REG		0x64	//READ SNSDATA0_L BEVORE SNSDATA0_H
@@ -34,18 +34,20 @@
 
 #define FXP_DEVLOCK_WR_REG		0x10
 
-
+#define P_CAL_ZERO_L			0x4C
+#define P_CAL_ZERO_H			0x4D
+#define DEVLOCK_WR 				0x10
 
 class FXPS7115 {
 public:
-	FXPS7115();
+	FXPS7115(Model *model);
 
 	void fxpInit(void);
-	uint32_t fxpReadPressure(void);
-	uint32_t fxpReadTemp(void);
+	bool fxpReadPressure(void);
+	bool fxpReadTemp(void);
 
 private:
-	HAL_StatusTypeDef writeByte(uint8_t addr);
+	HAL_StatusTypeDef writeByte(uint8_t addr, uint8_t data);
 
 
 	Model* model;

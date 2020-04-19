@@ -20,7 +20,7 @@ public:
 
 	void init(void);
 	char* getGPSData(void);
-	void gpsInterrupt(UART_HandleTypeDef *UartHandle);
+	void gpsInterrupt(uint8_t rxData);
 private:
 	//*********************variable declaration*********************
 
