@@ -9,6 +9,8 @@
 #define SRC_RFM95_RFM95_DEF_H_
 
 
+#include "../AppMain/AppMain.h"
+
 //defines for LoRa Mode
 #define	REG_FIFO					0x00
 #define	REG_OP_MOD					0x01
@@ -108,7 +110,7 @@
 #define RF_OPMODE_RX					0x05
 
 
-// RegBitRate (bits/sec) example bit rates
+// RegBitRate (0x01/0x02) (bits/sec) example bit rates
 #define RF_BITRATEMSB_1200            0x68
 #define RF_BITRATELSB_1200            0x2B
 
@@ -172,7 +174,7 @@
 #define RF_BITRATEMSB_32768           0x03
 #define RF_BITRATELSB_32768           0xD1
 
-// RegFdev - frequency deviation (Hz)
+// RegFdev (0x04/0x05) - frequency deviation (Hz)
 #define RF_FDEVMSB_2000             0x00
 #define RF_FDEVLSB_2000             0x21
 
@@ -299,7 +301,7 @@
 #define RF_FDEVMSB_300000           0x13
 #define RF_FDEVLSB_300000           0x33
 
-// RegFrf	- FR carrier frequency
+// RegFrf (0x06/0x07/0x08)	- FR carrier frequency
 
 #define RF_FRFMSB_315000			0x4E
 #define RF_FRFMID_315000			0xC0
@@ -317,7 +319,7 @@
 #define RF_FRFMID_915000			0xC0
 #define RF_FRFLSB_915000			0x26
 
-// RegPaConfig
+// RegPaConfig (0x09)
 #define RF_PA_20DBM					0xAF
 #define RF_PA_19DBM					0xAE
 #define RF_PA_18DBM					0xAD
@@ -342,7 +344,7 @@
 #define RF_PA_00DBM					0x70
 
 
-// RegPaRamp (only FSK modulation -> see datasheet for OOK modulation P88)
+// RegPaRamp (0x0A) (only FSK modulation -> see datasheet for OOK modulation P88)
 
 #define REG_MOD_SHP_NO				0x00	//default
 #define REG_MOD_SHP_BT10			0x20
@@ -366,7 +368,7 @@
 #define RF_PA_R12					0x0E
 #define RF_PA_R10					0x0F
 
-// RegOcp
+// RegOcp (0x0B)
 #define RF_OCP_OCPON				0x20	//default
 #define RF_OCP_OCPOFF				0x00
 
@@ -397,7 +399,7 @@
 #define RF_LNA_BOOST_ON				0x03
 #define RF_LNA_BOOST_OFF 			0x00	//default
 
-//RegRxConfig (0x0d)
+//RegRxConfig (0x0D)
 #define RF_CONF_RESTART_ON_COL_ON	0x80
 #define RF_CONF_RESTART_ON_COL_OFF	0x00
 
@@ -427,6 +429,16 @@
 #define RF_RSSI_SMOOTH_128			0x06
 #define RF_RSSI_SMOOTH_256			0x07
 
+// RegRssiCollision (0x0F)
+// -> (0x00 - 0xFF) Sets the threshold used to consider that an interferer is detected, witnessing a packet collision. 1dB/LSB (only RSSI increase) Default: 10dB
+
+// RegRssiThresh (0x10)
+// -> (0-0xFF) RSSI trigger level for the Rssi interrupt: - RssiThreshold / 2 [dBm]
+
+// RegRssiValue
+// -> (0x00 - 0xFF) Absolute value of the RSSI in dBm, 0.5dB steps. RSSI = - RssiValue/2 [dBm]
+
+
 // RegRxBw (0x12)
 
 #define RF_RXBW_MANT_16				0x00
@@ -441,6 +453,243 @@
 #define RF_RXBW_EXP_5				0x05
 #define RF_RXBW_EXP_6				0x06
 #define RF_RXBW_EXP_7				0x07
+
+// 0x13 - 0x1E  OOK/AFC settings-> see Datasheet for mor Information
+
+// RegPreambleDetect (0x1F)
+#define RF_PREAMB_DETECTOR_ON		0x80
+#define RF_PREAMB_DETECTOR_OFF		0x00
+
+#define RF_PREAMB_DETECTOR_SIZE_1b	0x00
+#define RF_PREAMB_DETECTOR_SIZE_2b	0x20	//default
+#define RF_PREAMB_DETECTOR_SIZE_3b	0x40
+
+#define RF_PREAMB_DETECTOR_TOL_0	0x00
+#define RF_PREAMB_DETECTOR_TOL_1	0x01
+#define RF_PREAMB_DETECTOR_TOL_2	0x02
+#define RF_PREAMB_DETECTOR_TOL_3	0x03
+#define RF_PREAMB_DETECTOR_TOL_4	0x04
+#define RF_PREAMB_DETECTOR_TOL_5	0x05
+#define RF_PREAMB_DETECTOR_TOL_6	0x06
+#define RF_PREAMB_DETECTOR_TOL_7	0x07
+#define RF_PREAMB_DETECTOR_TOL_8	0x08
+#define RF_PREAMB_DETECTOR_TOL_9	0x09
+#define RF_PREAMB_DETECTOR_TOL_10	0x0A	//default
+
+// Reg Timeout 1 - 3 / RxDelay (0x20 - 0x23) -> Timeout definition see Datasheet P92 for more information (default 0x00 - timeout disable)
+
+// RegOsc (0x24)
+#define RF_OSC_CAL_START_TRIGGER	0x08
+
+#define RF_OSC_CLK_OUT_DIF0			0x00
+#define RF_OSC_CLK_OUT_DIF2			0x01
+#define RF_OSC_CLK_OUT_DIF4			0x02
+#define RF_OSC_CLK_OUT_DIF8			0x03
+#define RF_OSC_CLK_OUT_DIF16		0x04
+#define RF_OSC_CLK_OUT_DIF32		0x05
+#define RF_OSC_CLK_RC				0x06
+#define RF_OSC_CLK_OFF				0x07	//default
+
+// RegPreamble Msb/Lsb (0x025/0x026)
+// - (0x00-0xFF) -> Size of the preamble to be sent (from TxStartCondition fulfilled)
+
+// RegSyncConfig (0x27)
+#define RF_SYNC_AUTO_RESTART_OFF		0x00
+#define RF_SYNC_AUTO_RESTART_ON_NOPLL	0x40
+#define RF_SYNC_AUTO_RESTART_ON_PLL		0x80	//default
+
+#define RF_SYNC_PREAMBLE_0XAA		0x00	//default
+#define RF_SYNC_PREAMBLE_0X55		0x20
+
+#define RF_SYNC_SYNC_ON				0x10	//default
+#define RF_SYNC_SYNC_OFF			0x00
+
+#define RF_SYNC_FIFOFILL_INT		0x00	//default
+#define RF_SYNC_FIFOFILL_SET		0x08
+
+#define RF_SYNC_SYNC_SIZE_0			0x00
+#define RF_SYNC_SYNC_SIZE_1			0x01
+#define RF_SYNC_SYNC_SIZE_2			0x02
+#define RF_SYNC_SYNC_SIZE_3			0x03	//default
+#define RF_SYNC_SYNC_SIZE_4			0x04
+#define RF_SYNC_SYNC_SIZE_5			0x05
+#define RF_SYNC_SYNC_SIZE_6			0x06
+#define RF_SYNC_SYNC_SIZE_7			0x07
+
+// RegSyncValue (0x28 - 0x2F)
+// -0x28 (0x00 - 0xFF) -> 1. byte of Sync word (MSB byte) - default 0x01
+// -0x29 (0x00 - 0xFF) -> 2. byte of Sync word (MSB byte) - default 0x01
+// -0x2A (0x00 - 0xFF) -> 3. byte of Sync word (MSB byte) - default 0x01
+// -0x2B (0x00 - 0xFF) -> 4. byte of Sync word (MSB byte) - default 0x01
+// -0x2C (0x00 - 0xFF) -> 5. byte of Sync word (MSB byte) - default 0x01
+// -0x2D (0x00 - 0xFF) -> 6. byte of Sync word (MSB byte) - default 0x01
+// -0x2E (0x00 - 0xFF) -> 7. byte of Sync word (MSB byte) - default 0x01
+// -0x2F (0x00 - 0xFF) -> 8. byte of Sync word (MSB byte) - default 0x01
+
+// RegPacketConfig1 (0x30)
+#define RF_PACKET1_FORMAT_FIX				0x00
+#define RF_PACKET1_FORMAT_VAR				0x80	//default
+
+#define RF_PACKET1_DC_OFF					0x00	//default
+#define RF_PACKET1_DC_MANCHESTER			0x20
+#define RF_PACKET1_DC_WHITENING				0x40
+
+#define RF_PACKET1_CRC_ON					0x10	//default
+#define RF_PACKET1_CRC_OFF					0x00
+
+#define RF_PACKET1_CRC_AUTOCLEAR_ON			0x00	//default
+#define RF_PACKET1_CRC_AUTOCLEAR_OFF		0x04
+
+#define RF_PACKET1_ADDR_FILT_OFF			0x00	//default
+#define RF_PACKET1_ADDR_FILT_NODE			0x02
+#define RF_PACKET1_ADDR_FILT_NODE_BROAD		0x04
+
+#define RF_PACKET1_CRC_CCITT				0x00	//default
+#define RF_PACKET1_CRC_IBM					0x01
+
+// RegPacketConfig2 (0x31)
+#define RF_PACKET2_DATA_MODE_CONT			0x00
+#define RF_PACKET2_DATA_MODE_PACKET			0x40
+
+#define RF_PACKET2_IHOME_ON					0x20
+#define RF_PACKET2_IHOME_OFF				0x00
+
+#define RF_PACKET2_BACON_ON					0x04
+#define RF_PACKET2_BACON_OFF				0x00
+
+// RegPayloadLength (0x32)
+#define RF_PAYLOAD_LEN_10				0x0A
+#define RF_PAYLOAD_LEN_20				0x14
+#define RF_PAYLOAD_LEN_30				0x1E
+#define RF_PAYLOAD_LEN_40				0x28
+#define RF_PAYLOAD_LEN_50				0x32
+#define RF_PAYLOAD_LEN_60				0x3C
+#define RF_PAYLOAD_LEN_70				0x46
+#define RF_PAYLOAD_LEN_80				0x50
+#define RF_PAYLOAD_LEN_90				0x5A
+#define RF_PAYLOAD_LEN_100				0x64
+#define RF_PAYLOAD_LEN_110				0x6E
+#define RF_PAYLOAD_LEN_120				0x78
+#define RF_PAYLOAD_LEN_130				0x82
+#define RF_PAYLOAD_LEN_140				0x8C
+#define RF_PAYLOAD_LEN_150				0x96
+#define RF_PAYLOAD_LEN_160				0xA0
+#define RF_PAYLOAD_LEN_170				0xAA
+#define RF_PAYLOAD_LEN_180				0xB4
+#define RF_PAYLOAD_LEN_190				0xBE
+#define RF_PAYLOAD_LEN_200				0xC8
+#define RF_PAYLOAD_LEN_210				0xD2
+#define RF_PAYLOAD_LEN_220				0xDC
+#define RF_PAYLOAD_LEN_230				0xE6
+#define RF_PAYLOAD_LEN_240				0xF0
+#define RF_PAYLOAD_LEN_250				0xFA
+//for larger packet length use RegPacketConfig2 bit 2-0 -> see Datasheet P94
+
+// RegNodeAdrs (0x33)
+// - (0x00-0xFF) Node address used in addressfiltering
+
+// RegBroadcastAdrs (0x34)
+// - (0x00-0xFF) Broadcast address used in addressfiltering
+
+// RegFifoThresh
+#define RF_FIFOTHRESH_TXSTART_FIFOLEVEL		0x00
+#define RF_FIFOTHRESH_TXSTART_FIFOEMPTY		0x80	//default
+
+#define RF_FIFOTHRESH_FIFO_INT_0			0x00
+#define RF_FIFOTHRESH_FIFO_INT_1			0x01
+#define RF_FIFOTHRESH_FIFO_INT_2			0x02
+#define RF_FIFOTHRESH_FIFO_INT_3			0x03
+#define RF_FIFOTHRESH_FIFO_INT_4			0x04
+#define RF_FIFOTHRESH_FIFO_INT_5			0x05
+#define RF_FIFOTHRESH_FIFO_INT_6			0x06
+#define RF_FIFOTHRESH_FIFO_INT_7			0x07
+#define RF_FIFOTHRESH_FIFO_INT_8			0x08
+#define RF_FIFOTHRESH_FIFO_INT_15			0x0F
+//.
+//.
+//.
+
+// RegSeqConfig1 (0x36)
+#define RF_SEQ1_SEQUSTART_TRIG			0x80
+
+#define RF_SEQ1_SEQUSTOP_TRIG			0x40
+
+#define RF_SEQ1_MODE_SLEEP				0x20
+#define RF_SEQ1_MODE_STBY				0x00	//default
+
+#define RF_SEQ1_FROM_START_00			0x00	//default
+#define RF_SEQ1_FROM_START_01			0x08
+#define RF_SEQ1_FROM_START_10			0x10
+#define RF_SEQ1_FROM_START_11			0x18
+
+#define RF_SEQ1_LPS_OFF					0x00	//default
+#define RF_SEQ1_LPS_IDLE				0x04
+
+#define RF_SEQ1_FROM_IDLE_TO_RX			0x00	//default
+#define RF_SEQ1_FROM_IDLE_TO_TX			0x02
+
+
+#define RF_SEQ1_FROM_TX_TO_LPS			0x00	//default
+#define RF_SEQ1_FROM_TX_TO_RX			0x01
+
+
+// RegSeqConfig1 (0x37)
+#define RF_SEQ1_FROM_RX_001				0x20	// to PacketReceived state on a PayloadReady interrupt
+#define RF_SEQ1_FROM_RX_010				0x40	// to LowPowerSelection on a PayloadReady interrupt
+#define RF_SEQ1_FROM_RX_011				0x60	// to PacketReceived state on a CrcOk interrupt
+#define RF_SEQ1_FROM_RX_100				0x80	// to SequencerOff state on a Rssi interrupt
+#define RF_SEQ1_FROM_RX_101				0xA0	// to SequencerOff state on a SyncAddress interrupt
+#define RF_SEQ1_FROM_RX_110				0xC0	// to SequencerOff state on a PreambleDetect interrupt
+
+#define RF_SEQ1_FROM_RXTIMOU_00			0x00	// to Receive State, via ReceiveRestart (default)
+#define RF_SEQ1_FROM_RXTIMOU_01			0x08	// to Transmit state
+#define RF_SEQ1_FROM_RXTIMOU_10			0x10	// to LowPowerSelection
+#define RF_SEQ1_FROM_RXTIMOU_11			0x18	// to SequencerOff state
+
+#define RF_SEQ1_FROM_PACK_RX_000		0x00	// to SequencerOff state
+#define RF_SEQ1_FROM_PACK_RX_001		0x01	// to Transmit state on a FifoEmpty interrupt
+#define RF_SEQ1_FROM_PACK_RX_010		0x02	// to LowPowerSelection
+#define RF_SEQ1_FROM_PACK_RX_011		0x03	// to Receive via FS mode, if frequency was changed
+#define RF_SEQ1_FROM_PACK_RX_100		0x04	// to Receive state (no frequency change)
+
+// RegTimer (0x38-0x3A)
+// -> RegTimerResol - default 0x00 (Timer1+2 off) -> see Datasheet P96 for more information
+// -> RegTimer1Coef - default 0xF5	-> unused if Timer1 disabled
+// -> RegTimer2Coef - default 0x20	-> unused if Timer2 disabled
+
+// RegImageCal (0x3B)
+#define RF_IMG_AUTO_CAL_ON				0x80
+#define RF_IMG_AUTO_CAL_OFF				0x00
+
+#define RF_IMG_START_TRIG				0x40
+
+#define RF_IMG_TEMP_CHANG_LOW			0x00	//default
+#define RF_IMG_TEMP_CHANG_HIGH			0x08
+
+#define RF_IMG_TEMP_THRES_5				0x00
+#define RF_IMG_TEMP_THRES_10			0x02	//default
+#define RF_IMG_TEMP_THRES_15			0x04
+#define RF_IMG_TEMP_THRES_20			0x06
+
+#define RF_IMG_TEMP_MONITOR_ON			0x01
+#define RF_IMG_TEMP_MONITOR_OFF			0x00	//default
+
+// RegTemp (0x3C) read only
+
+// RegLowBat
+#define RF_BAT_LOW_BAT_ON
+#define RF_BAT_LOW_BAT_OFF
+
+#define RF_BAT_LOW_BAT_TRIM_1695		0x00
+#define RF_BAT_LOW_BAT_TRIM_1764		0x01
+#define RF_BAT_LOW_BAT_TRIM_1835		0x02	//default
+#define RF_BAT_LOW_BAT_TRIM_1905		0x03
+#define RF_BAT_LOW_BAT_TRIM_1976		0x04
+#define RF_BAT_LOW_BAT_TRIM_2045		0x05
+#define RF_BAT_LOW_BAT_TRIM_2116		0x06
+#define RF_BAT_LOW_BAT_TRIM_2185		0x07
+
+// RegIrqFlags1+2 (0x3E/0x3F) -> most read only -> for mor information see Datashee P98
 
 // REG_DIO_MAPPING_1 (0x40) DIO 0-3
 #define RF_DIO_0_TX_PACKETSENT		0x00
@@ -473,52 +722,23 @@
 #define RF_DIO_PREAMBLE_INT			0x00
 
 
+// RegVersion (0x42) -> read only
 
-// RegModemConfig
-#define RF_RMC_BW7800				0x00
-#define RF_RMC_BW10400				0x10
-#define RF_RMC_BW15600				0x20
-#define RF_RMC_BW20800				0x30
-#define RF_RMC_BW31250				0x40
-#define RF_RMC_BW41700				0x50
-#define RF_RMC_BW62500				0x60
-#define RF_RMC_BW125000				0x70	//default
-#define RF_RMC_BW250000				0x80
-#define RF_RMC_BW500000				0x90
+// RegPllHop (0x44)
+#define RF_PLLHOP_FAST_HOP_ON_0		0x00	// Frf is validated when FSTx or FSRx is requested (default)
+#define RF_PLLHOP_FAST_HOP_ON_1		0x80	// Frf is validated triggered when RegFrfLsb is written
 
-#define RF_RMC_CORRAT4_5			0x02	//default
-#define RF_RMC_CORRAT4_6			0x04
-#define RF_RMC_CORRAT4_7			0x08
-#define RF_RMC_CORRAT4_8			0x0A
+ // RegTcxo (0x4B)
+#define RF_TCXO_INPUT_ON_0			0x00	// Crystal Oscillator with external Crystal (default)
+#define RF_TCXO_INPUT_ON_1			0x10	// External clipped sine TCXO AC-connected to XTA pin
 
-#define RF_RMC_HEADER_M_IMPL		0x00	//default
-#define RF_RMC_HEADER_M_EXPL 		0x01
+// RegPaDac (0x4D)
+#define RF_PA_DAC_ON				0x07	// +20dBm on PA_BOOST when OutputPower=1111
+#define RF_PA_DAC_OFF				0x04	// Default value (default)
 
-// RegModemConfig 2
+// RegBitrateFrac (0x5D)	-> for mor information see Datasheet P99
+#define RF_BITRATE_FRAC				0x00	// Fractional part of the bit rate divider (Only valid for FSK)
 
-#define RF_RMC2_SFR6				0x60
-#define RF_RMC2_SFR7				0x70	//default
-#define RF_RMC2_SFR8				0x80
-#define RF_RMC2_SFR9				0x90
-#define RF_RMC2_SFR10				0xA0
-#define RF_RMC2_SFR11				0xB0
-#define RF_RMC2_SFR12				0xC0
-
-#define RF_RMC2_TX_CONTON			0x08
-#define RF_RMC2_TX_CONTOFF			0x00	//default
-
-#define RF_RMC2_RX_CRCON			0x04
-#define RF_RMC2_RX_CRCOFF			0x00	//default
-
-// RegModemConfig 3
-#define RF_RMC2_MOB_NODEON 			0x08
-#define RF_RMC2_MOB_NODEOFF 		0x00	//default
-
-#define RF_RMC2_AGCAUTOON			0x04
-#define RF_RMC2_AGCAUTOOFF			0x00	//default
-
-
-
-
+// RegAgc (0x61-0x64) -> for more information see Datashee P100
 
 #endif /* SRC_RFM95_RFM95_DEF_H_ */

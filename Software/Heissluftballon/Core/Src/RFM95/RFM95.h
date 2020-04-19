@@ -16,12 +16,12 @@ class RFM95 {
 public:
 	RFM95();
 
-	enum RFM_DIR{
+/*	enum RFM_DIR{
 		DIR_TX,
 		DIR_RX
 	};
 
-	typedef enum MODE{
+	enum MODE{
 		TX		= 0x0C,
 		RX		= 0x10,
 		SLEEP	= 0x00,
@@ -37,7 +37,7 @@ public:
 	void readFIFO(void);
 
 	void setTransmitDirection(RFM_DIR rfmDir);
-	void setMode(MODE mode);
+	void setMode(MODE mode);*/
 
 
 private:
