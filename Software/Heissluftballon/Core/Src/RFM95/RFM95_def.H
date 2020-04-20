@@ -9,7 +9,6 @@
 #define SRC_RFM95_RFM95_DEF_H_
 
 
-#include "../AppMain/AppMain.h"
 
 //defines for LoRa Mode
 #define	REG_FIFO					0x00

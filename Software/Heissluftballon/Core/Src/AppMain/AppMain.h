@@ -18,6 +18,7 @@
 
 
 
+
 #ifndef SRC_APPMAIN_APPMAIN_H_
 #define SRC_APPMAIN_APPMAIN_H_
 
@@ -33,7 +34,6 @@ public:
 	 FXPS7115 fxps7115 = FXPS7115(&model);		//Pressure sensor
 	 MAX31865_TEMP max31865 = MAX31865_TEMP(&model);	//External Temperature sensor
 	 SHT21 sht21 = SHT21(&model);				//Onboard Temperature & Humidity sensor
-	 RFM95 test = RFM95();
 	 RFM95 rfm95_1 = RFM95();						//Radio module
 	 GPS gps = GPS(&model);					//GPS
 	 USB_Com usbCom = USB_Com();					//USB
