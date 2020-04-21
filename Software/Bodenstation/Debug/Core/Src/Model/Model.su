@@ -1,0 +1,15 @@
+Model.cpp:10:1:Model::Model()	24	static
+Model.cpp:25:6:void Model::setGPS_GCS(char*)	16	static
+Model.cpp:29:7:char* Model::getGPS_GCS()	16	static
+Model.cpp:35:6:void Model::setGPS_Device(char*)	16	static
+Model.cpp:38:7:char* Model::getGPS_Device()	16	static
+Model.cpp:43:6:void Model::setHumidity(uint16_t)	16	static
+Model.cpp:46:10:uint16_t Model::getHumidity()	16	static
+Model.cpp:51:6:void Model::setPressure(uint16_t)	16	static
+Model.cpp:54:10:uint16_t Model::getPressure()	16	static
+Model.cpp:59:6:void Model::setTempOutside(uint16_t)	16	static
+Model.cpp:62:10:uint16_t Model::getTempOutside()	16	static
+Model.cpp:67:7:void Model::setTempOutside8Bit(uint8_t)	16	static
+Model.cpp:71:10:uint8_t Model::getTempOutside8Bit()	16	static
+Model.cpp:76:6:void Model::setTempInside(uint16_t)	16	static
+Model.cpp:79:10:uint16_t Model::getTempInsed()	16	static
