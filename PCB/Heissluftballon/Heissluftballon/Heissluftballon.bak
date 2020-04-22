@@ -1016,7 +1016,7 @@ U 1 1 5EB1B47A
 P 2750 1150
 F 0 "J2" H 2668 825 50  0000 C CNN
 F 1 "Screw_Terminal_01x02" H 2668 916 50  0000 C CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 2750 1150 50  0001 C CNN
+F 2 "MK_Footprints:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 2750 1150 50  0001 C CNN
 F 3 "~" H 2750 1150 50  0001 C CNN
 	1    2750 1150
 	-1   0    0    1   
@@ -1027,7 +1027,7 @@ U 1 1 5EB2C8AC
 P 6500 6850
 F 0 "J4" H 6580 6842 50  0000 L CNN
 F 1 "PT1000" H 6580 6751 50  0000 L CNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 6500 6850 50  0001 C CNN
+F 2 "MK_Footprints:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal" H 6500 6850 50  0001 C CNN
 F 3 "~" H 6500 6850 50  0001 C CNN
 	1    6500 6850
 	1    0    0    -1  
@@ -1289,7 +1289,7 @@ U 1 1 5EEBFA8B
 P 1850 6500
 F 0 "U7" H 2050 7050 50  0000 C CNN
 F 1 "FXPS7115D4" H 2250 6950 50  0000 C CNN
-F 2 "Package_DFN_QFN:Panasonic_HQFN-16-1EP_4x4mm_P0.65mm_EP2.9x2.9mm" H 2250 7100 50  0001 C CNN
+F 2 "MK_Footprints:HQFN-16-1EP_4x4mm_P0.8mm_EP2.7x2.7mm" H 2250 7100 50  0001 C CNN
 F 3 "" H 2250 7100 50  0001 C CNN
 	1    1850 6500
 	1    0    0    -1  
@@ -1485,9 +1485,9 @@ Wire Wire Line
 Wire Wire Line
 	8500 4100 8650 4100
 Text Notes 2300 7050 0    50   ~ 0
-I2C Address: 60h
+I2C device address: 60h
 Text Notes 8400 4500 0    50   ~ 0
-I2C Address 80h
+I2C device address 80h
 $Comp
 L Connector:Conn_01x02_Male J6
 U 1 1 5E9A804D
@@ -1686,17 +1686,6 @@ Connection ~ 8550 5800
 Wire Wire Line
 	8550 5800 9000 5800
 $Comp
-L Graphic:SYM_ESD_Small #SYM1
-U 1 1 5F040BE0
-P 6450 1250
-F 0 "#SYM1" H 6450 1390 50  0001 C CNN
-F 1 "SYM_ESD_Small" H 6450 1125 50  0001 C CNN
-F 2 "Symbol:ESD-Logo_8.9x8mm_SilkScreen" H 6452 1426 50  0001 C CNN
-F 3 "~" H 6450 1260 50  0001 C CNN
-	1    6450 1250
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:LED D1
 U 1 1 5F066A2A
 P 3200 2800
@@ -1741,4 +1730,5 @@ Wire Wire Line
 	3450 2800 3450 2900
 Wire Wire Line
 	2450 2800 2450 3050
+NoConn ~ 2300 2950
 $EndSCHEMATC

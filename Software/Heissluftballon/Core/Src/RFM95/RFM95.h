@@ -10,8 +10,10 @@
 
 #include "stm32l4xx_hal.h"
 #include "RFM95_def.H"
+#include "Stack.h"
 
 #define SPI_TIMEOUT			100
+#define GPIO_TIMEOUT		250
 
 class RFM95 {
 public:
@@ -36,30 +38,34 @@ public:
 		uint16_t gpioPin4;
 		GPIO_TypeDef* gpioPort5;
 		uint16_t gpioPin5;
-	};
 
-	enum RFM_DIR{
-		DIR_TX,
-		DIR_RX
+		GPIO_TypeDef* gpioPortRST;
+		uint16_t gpioPinRST;
 	};
 
 	enum MODE{
-		TX		= 0x0C,
-		RX		= 0x10,
-		SLEEP	= 0x00,
-		STANDBY	= 0X04
+		SLEEP	= RF_OPMODE_SLEEP,
+		STANDBY	= RF_OPMODE_STBY,
+		FSTX 	= RF_OPMODE_FSTX,
+		TX		= RF_OPMODE_TX,
+		FSRX	= RF_OPMODE_FSRX,
+		RX		= RF_OPMODE_RX
 	};
 
-	void initRFM(uint8_t payloadLength, SPI_HW_SETTINGS spiHwSettings, GPIO_HW_SETTINGS gpioHwSettings);
+	enum RFM_INIT_Typedef{
+		RFM_OK,
+		RFM_PAYLOAD_ERROR,
+		RFM_INIT_FAIL
+	};
 
-	void writeReg(uint8_t addr, uint8_t data);
-	uint8_t readReg(uint8_t addr);
+	RFM_INIT_Typedef initRFM(uint16_t maxPayloadLength, SPI_HW_SETTINGS spiHwSettings, GPIO_HW_SETTINGS gpioHwSettings);
+	void setOutputPower(uint8_t outputPower);
+	void resetRFM(void);
+	Stack* rfmStack(void);
 
-	void writeFIFO(void);
-	void readFIFO(void);
-
-	void setTransmitDirection(RFM_DIR rfmDir);
-	void setMode(MODE mode);
+	void rfmTransmit(uint8_t* data);
+	void rfmReceive(void);
+	bool isDataReady(void);
 
 
 private:
@@ -67,10 +73,25 @@ private:
 	SPI_HW_SETTINGS spiHwSettings;
 	GPIO_HW_SETTINGS gpioHwSettings;
 	uint16_t payloadLength;
+	Stack stack;
+
+
+	//local internal variable
+	MODE currentMode = STANDBY;
+	uint8_t userOutputPower;
 
 	void deselectRFM(void);
-	void selectRFM(void);;
-	GPIO_PinState readGPIO(GPIO_TypeDef* gpioPort, uint16_t gpioPin );
+	void selectRFM(void);
+
+	void rcCalibration(void);
+	void setMode(MODE mode);
+	bool readGPIO(uint8_t gpioPin);
+
+	HAL_StatusTypeDef writeReg(uint8_t addr, uint8_t data);
+	uint8_t readReg(uint8_t addr);
+
+	RFM_INIT_Typedef writeFIFO(uint8_t* data);
+	void readFIFO(void);
 
 };
 

@@ -1615,9 +1615,9 @@ Wire Wire Line
 	8750 1750 8850 1750
 Wire Wire Line
 	8850 1650 8750 1650
-Text GLabel 8750 1850 0    50   Output ~ 0
+Text GLabel 8750 1750 0    50   Output ~ 0
 SPI_MISO
-Text GLabel 8750 1750 0    50   Input ~ 0
+Text GLabel 8750 1850 0    50   Input ~ 0
 SPI_MOSI
 Text GLabel 8750 1650 0    50   Input ~ 0
 SPI_SCK

@@ -35,7 +35,8 @@ Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h \
- ../Core/Src/RFM95/RFM95_def.H ../Core/Src/RFM95/../AppMain/AppMain.h \
+ ../Core/Src/RFM95/RFM95_def.H ../Core/Src/RFM95/Stack.h \
+ ../Core/Src/RFM95/../AppMain/AppMain.h \
  ../Core/Src/RFM95/../AppMain/../Model/Model.h \
  ../Core/Src/RFM95/../AppMain/../Model/../config/Config.h \
  ../Core/Src/RFM95/../AppMain/../GPS/GPS.h ../Core/Inc/usart.h \
@@ -142,6 +143,8 @@ Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h:
 
 ../Core/Src/RFM95/RFM95_def.H:
+
+../Core/Src/RFM95/Stack.h:
 
 ../Core/Src/RFM95/../AppMain/AppMain.h:
 

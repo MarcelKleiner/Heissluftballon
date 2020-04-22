@@ -4,6 +4,7 @@
 "Core/Src/MAX31865/MAX31865TEMP.o"
 "Core/Src/Model/Model.o"
 "Core/Src/RFM95/RFM95.o"
+"Core/Src/RFM95/Stack.o"
 "Core/Src/SHT21/SHT21.o"
 "Core/Src/USB/USBCom.o"
 "Core/Src/gpio.o"

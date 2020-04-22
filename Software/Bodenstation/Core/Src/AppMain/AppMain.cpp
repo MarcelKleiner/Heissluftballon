@@ -1,3 +1,4 @@
+
 /*
  * AppMain.cpp
  *
@@ -32,14 +33,14 @@ void AppMain::initRFM(){
 	gpioHwSettings.gpioPort4 = RFM_DIO4_GPIO_Port;
 	gpioHwSettings.gpioPort5 = RFM_DIO5_GPIO_Port;
 
-	gpioHwSettings.gpioPortRST = RFM_NSS_GPIO_Port;
-	gpioHwSettings.gpioPinRST = RFM_NSS_Pin;
+	gpioHwSettings.gpioPortRST = RFM_RST_GPIO_Port;
+	gpioHwSettings.gpioPinRST = RFM_RST_Pin;
 
 	spiHwSettings.gpioPin = RFM_NSS_Pin;
 	spiHwSettings.gpioPort = RFM_NSS_GPIO_Port;
 	spiHwSettings.hspi = &hspi1;
 
-	rfm95.initRFM(100, spiHwSettings, gpioHwSettings);
+	rfm95.initRFM(TRANSMIT_DATA_LENGTH, spiHwSettings, gpioHwSettings);
 }
 
 
@@ -67,13 +68,14 @@ void AppMain::mainProg(){
 
 		uint16_t stackCounter = 1;
 		transmitData[0] = '%';
+		//rfm95.rfmReceive();
+		//if(rfm95.isDataReady()){
+		//	while(!rfmStack->isEmpty()){
+				//transmitData[stackCounter] = rfmStack->pop();
+				//stackCounter++;
+		//	}
+		//}
 
-		if(rfm95.isDataReady()){
-			while(!rfmStack->isEmpty()){
-				transmitData[stackCounter] = rfmStack->pop();
-				stackCounter++;
-			}
-		}
 		uint8_t offset = stackCounter;	//Fortlaufend zu vorheriger index
 		uint8_t counter = 0;
 		char *gpsGCSTemp = model.getGPS_GCS();
@@ -86,7 +88,7 @@ void AppMain::mainProg(){
 		transmitData[offset+1] = '!';
 
 		/*Transmit over USB - use only in GCS*/
-
+		rfm95.rfmReceive();
 		usbCom.usbTransmit(transmitData, TRANSMIT_DATA_LENGTH);
 
 		/*Transmit over air - use only in device*/
@@ -95,9 +97,9 @@ void AppMain::mainProg(){
 
 
 
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(500);
-		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+	//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 		HAL_Delay(500);
 
 	}

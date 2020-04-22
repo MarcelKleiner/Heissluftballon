@@ -10,7 +10,7 @@
 
 
 
-//defines for LoRa Mode
+//defines for FSK Mode
 #define	REG_FIFO					0x00
 #define	REG_OP_MOD					0x01
 #define	REG_BITRATE_MSB				0x02
@@ -690,9 +690,9 @@
 
 // RegIrqFlags1+2 (0x3E/0x3F) -> most read only -> for mor information see Datashee P98
 
-// REG_DIO_MAPPING_1 (0x40) DIO 0-3
+// REG_DIO_MAPPING_1 (0x40) DIO 0-3	-> datasheet P
 #define RF_DIO_0_TX_PACKETSENT		0x00
-#define RF_DIO_0_TX_PAYLOADRDY		0x00
+#define RF_DIO_0_RX_PAYLOADRDY		0x00
 #define RF_DIO_0_RX_CRCOK			0x40
 #define RF_DIO_0_ALL_TEMP_LOWBAT	0xC0
 
@@ -701,10 +701,12 @@
 #define RF_DIO_1_ALL_FIFOFULL		0x20
 
 #define RF_DIO_2_ALL_FIFOFULL		0x00
-#define RF_DIO_2_RX_RXRDY			0x04
+#define RF_DIO_2_RX_RX_RDY			0x04
 #define RF_DIO_2_RX_TIMEOUT			0x08
 #define RF_DIO_2_RX_SYNCADDR		0x0C
 #define RF_DIO_2_TX_FIFOFULL		0x0C
+
+#define RF_DIO_3_TX_TX_RDY			0x01
 
 // REG_DIO_MAPPING_2 (0x41) DIO 4-5
 #define RF_DIO_4_ALL_TEMP_LOWBAT	0x00
@@ -715,7 +717,7 @@
 #define RF_DIO_5_ALL_CLKOUT			0x00
 #define RF_DIO_5_TX_RX_PLLLOCK		0x10
 #define RF_DIO_5_TX_RX_DATA			0x20
-#define RF_DIO_5_ALL_MODERDX		0x30
+#define RF_DIO_5_ALL_MODERDY		0x30
 
 #define RF_DIO_PREAMBLE_RSSI		0x01
 #define RF_DIO_PREAMBLE_INT			0x00

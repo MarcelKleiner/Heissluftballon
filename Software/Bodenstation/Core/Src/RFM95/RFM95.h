@@ -90,7 +90,7 @@ private:
 	HAL_StatusTypeDef writeReg(uint8_t addr, uint8_t data);
 	uint8_t readReg(uint8_t addr);
 
-	RFM_INIT_Typedef writeFIFO(uint8_t *data);
+	RFM_INIT_Typedef writeFIFO(uint8_t* data);
 	void readFIFO(void);
 
 };

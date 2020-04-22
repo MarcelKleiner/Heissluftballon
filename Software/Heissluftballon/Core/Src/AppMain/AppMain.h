@@ -22,7 +22,7 @@
 #ifndef SRC_APPMAIN_APPMAIN_H_
 #define SRC_APPMAIN_APPMAIN_H_
 
-#define TRANSMIT_DATA_LENGTH		(GPS_DATA_SIZE*2 + 20)
+#define TRANSMIT_DATA_LENGTH		(GPS_DATA_SIZE + 20)
 
 
 
@@ -34,12 +34,14 @@ public:
 	 FXPS7115 fxps7115 = FXPS7115(&model);		//Pressure sensor
 	 MAX31865_TEMP max31865 = MAX31865_TEMP(&model);	//External Temperature sensor
 	 SHT21 sht21 = SHT21(&model);				//Onboard Temperature & Humidity sensor
-	 RFM95 rfm95_1 = RFM95();						//Radio module
+	 RFM95 rfm95 = RFM95();						//Radio module
 	 GPS gps = GPS(&model);					//GPS
 	 USB_Com usbCom = USB_Com();					//USB
 
 
 	AppMain();
+
+	void initRFM(void);
 
 	void mainProg(void);
 	void USB_Transmit(uint8_t* data, uint8_t size);
