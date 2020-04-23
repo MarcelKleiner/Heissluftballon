@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Timers;
 using System.IO.Ports;
 using System.Windows;
 using System.Windows.Controls;
+
 
 namespace GCS.SerialPort
 {
@@ -174,7 +172,7 @@ namespace GCS.SerialPort
             char[] buffer = new char[bytes];
             sp.Read(buffer, 0, bytes);
 
-            this.data = buffer;
+            model.setRawData(buffer);
 
         }
 

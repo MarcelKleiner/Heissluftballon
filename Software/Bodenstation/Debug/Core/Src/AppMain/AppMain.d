@@ -40,21 +40,18 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
  ../Core/Src/AppMain/../GPS/../config/Config.h \
  ../Core/Src/AppMain/../GPS/../Model/Model.h \
  ../Core/Src/AppMain/../GPS/../Model/../config/Config.h \
- ../Core/Src/AppMain/../RFM95/RFM95.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
- ../Core/Src/AppMain/../RFM95/Stack.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
- ../Core/Src/AppMain/../USB/USBCom.h ../USB_DEVICE/App/usb_device.h \
+ ../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h ../Core/Inc/main.h \
+ ../Core/Inc/spi.h ../Core/Inc/gpio.h ../Core/Src/AppMain/../USB/USBCom.h \
+ ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
- ../USB_DEVICE/App/usbd_cdc_if.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../USB_DEVICE/App/usbd_cdc_if.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- ../Core/Inc/i2c.h ../Core/Inc/spi.h
+ ../Core/Inc/i2c.h
 
 ../Core/Src/AppMain/AppMain.h:
 
@@ -144,13 +141,13 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
 
 ../Core/Src/AppMain/../GPS/../Model/../config/Config.h:
 
-../Core/Src/AppMain/../RFM95/RFM95.h:
+../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h:
 
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
+../Core/Inc/main.h:
 
-../Core/Src/AppMain/../RFM95/Stack.h:
+../Core/Inc/spi.h:
 
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
+../Core/Inc/gpio.h:
 
 ../Core/Src/AppMain/../USB/USBCom.h:
 
@@ -159,8 +156,6 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 
 ../USB_DEVICE/Target/usbd_conf.h:
-
-../Core/Inc/main.h:
 
 ../USB_DEVICE/App/usbd_cdc_if.h:
 
@@ -177,5 +172,3 @@ Core/Src/AppMain/AppMain.o: ../Core/Src/AppMain/AppMain.cpp \
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
 
 ../Core/Inc/i2c.h:
-
-../Core/Inc/spi.h:

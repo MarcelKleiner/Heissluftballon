@@ -32,7 +32,8 @@ Core/Src/FXPS7115D4 \
 Core/Src/GPS \
 Core/Src/MAX31865 \
 Core/Src/Model \
-Core/Src/RFM95 \
+Core/Src/RFM95/FSK \
+Core/Src/RFM95/LORA \
 Core/Src/SHT21 \
 Core/Src/USB \
 Core/Src \

@@ -1,5 +1,5 @@
-Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
- ../Core/Src/RFM95/RFM95.h \
+Core/Src/RFM95/LORA/RFM95LoRa.o: ../Core/Src/RFM95/LORA/RFM95LoRa.cpp \
+ ../Core/Src/RFM95/LORA/RFM95LoRa.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -35,34 +35,30 @@ Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h \
- ../Core/Src/RFM95/RFM95_def.H ../Core/Src/RFM95/Stack.h \
- ../Core/Src/RFM95/../AppMain/AppMain.h \
- ../Core/Src/RFM95/../AppMain/../Model/Model.h \
- ../Core/Src/RFM95/../AppMain/../Model/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../GPS/GPS.h ../Core/Inc/usart.h \
- ../Core/Inc/main.h \
- ../Core/Src/RFM95/../AppMain/../GPS/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../GPS/../Model/Model.h \
- ../Core/Src/RFM95/../AppMain/../GPS/../Model/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../SHT21/SHT21.h ../Core/Inc/i2c.h \
- ../Core/Src/RFM95/../AppMain/../SHT21/../config/I2C_Config.h \
- ../Core/Src/RFM95/../AppMain/../SHT21/../Model/Model.h \
- ../Core/Src/RFM95/../AppMain/../SHT21/../Model/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../FXPS7115D4/FXPS7115.h \
- ../Core/Src/RFM95/../AppMain/../FXPS7115D4/../config/I2C_Config.h \
- ../Core/Src/RFM95/../AppMain/../FXPS7115D4/../Model/Model.h \
- ../Core/Src/RFM95/../AppMain/../FXPS7115D4/../Model/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../RFM95/RFM95.h \
- ../Core/Src/RFM95/../AppMain/../RFM95/RFM95_def.H \
- ../Core/Src/RFM95/../AppMain/../MAX31865/MAX31865TEMP.h \
- ../Core/Inc/spi.h \
- ../Core/Src/RFM95/../AppMain/../MAX31865/../Model/Model.h \
- ../Core/Src/RFM95/../AppMain/../MAX31865/../Model/../config/Config.h \
- ../Core/Src/RFM95/../AppMain/../USB/USBCom.h \
+ ../Core/Inc/main.h ../Core/Inc/spi.h ../Core/Inc/main.h \
+ ../Core/Inc/gpio.h ../Core/Src/RFM95/LORA/../../AppMain/AppMain.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../Model/Model.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../Model/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../GPS/GPS.h ../Core/Inc/usart.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../GPS/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../GPS/../Model/Model.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../GPS/../Model/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../SHT21/SHT21.h ../Core/Inc/i2c.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../config/I2C_Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../Model/Model.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../Model/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/FXPS7115.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../config/I2C_Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../Model/Model.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../Model/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../RFM95/LORA/RFM95LoRa.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/MAX31865TEMP.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/../Model/Model.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/../Model/../config/Config.h \
+ ../Core/Src/RFM95/LORA/../../AppMain/../USB/USBCom.h \
  ../USB_DEVICE/App/usb_device.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
- ../USB_DEVICE/App/usbd_cdc_if.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../USB_DEVICE/App/usbd_cdc_if.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
@@ -70,7 +66,7 @@ Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
 
-../Core/Src/RFM95/RFM95.h:
+../Core/Src/RFM95/LORA/RFM95LoRa.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 
@@ -142,67 +138,63 @@ Core/Src/RFM95/RFM95.o: ../Core/Src/RFM95/RFM95.cpp \
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h:
 
-../Core/Src/RFM95/RFM95_def.H:
-
-../Core/Src/RFM95/Stack.h:
-
-../Core/Src/RFM95/../AppMain/AppMain.h:
-
-../Core/Src/RFM95/../AppMain/../Model/Model.h:
-
-../Core/Src/RFM95/../AppMain/../Model/../config/Config.h:
-
-../Core/Src/RFM95/../AppMain/../GPS/GPS.h:
-
-../Core/Inc/usart.h:
-
 ../Core/Inc/main.h:
-
-../Core/Src/RFM95/../AppMain/../GPS/../config/Config.h:
-
-../Core/Src/RFM95/../AppMain/../GPS/../Model/Model.h:
-
-../Core/Src/RFM95/../AppMain/../GPS/../Model/../config/Config.h:
-
-../Core/Src/RFM95/../AppMain/../SHT21/SHT21.h:
-
-../Core/Inc/i2c.h:
-
-../Core/Src/RFM95/../AppMain/../SHT21/../config/I2C_Config.h:
-
-../Core/Src/RFM95/../AppMain/../SHT21/../Model/Model.h:
-
-../Core/Src/RFM95/../AppMain/../SHT21/../Model/../config/Config.h:
-
-../Core/Src/RFM95/../AppMain/../FXPS7115D4/FXPS7115.h:
-
-../Core/Src/RFM95/../AppMain/../FXPS7115D4/../config/I2C_Config.h:
-
-../Core/Src/RFM95/../AppMain/../FXPS7115D4/../Model/Model.h:
-
-../Core/Src/RFM95/../AppMain/../FXPS7115D4/../Model/../config/Config.h:
-
-../Core/Src/RFM95/../AppMain/../RFM95/RFM95.h:
-
-../Core/Src/RFM95/../AppMain/../RFM95/RFM95_def.H:
-
-../Core/Src/RFM95/../AppMain/../MAX31865/MAX31865TEMP.h:
 
 ../Core/Inc/spi.h:
 
-../Core/Src/RFM95/../AppMain/../MAX31865/../Model/Model.h:
+../Core/Inc/main.h:
 
-../Core/Src/RFM95/../AppMain/../MAX31865/../Model/../config/Config.h:
+../Core/Inc/gpio.h:
 
-../Core/Src/RFM95/../AppMain/../USB/USBCom.h:
+../Core/Src/RFM95/LORA/../../AppMain/AppMain.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../Model/Model.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../Model/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../GPS/GPS.h:
+
+../Core/Inc/usart.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../GPS/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../GPS/../Model/Model.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../GPS/../Model/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../SHT21/SHT21.h:
+
+../Core/Inc/i2c.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../config/I2C_Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../Model/Model.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../SHT21/../Model/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/FXPS7115.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../config/I2C_Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../Model/Model.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../FXPS7115D4/../Model/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../RFM95/LORA/RFM95LoRa.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/MAX31865TEMP.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/../Model/Model.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../MAX31865/../Model/../config/Config.h:
+
+../Core/Src/RFM95/LORA/../../AppMain/../USB/USBCom.h:
 
 ../USB_DEVICE/App/usb_device.h:
 
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 
 ../USB_DEVICE/Target/usbd_conf.h:
-
-../Core/Inc/main.h:
 
 ../USB_DEVICE/App/usbd_cdc_if.h:
 

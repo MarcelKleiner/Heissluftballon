@@ -54,6 +54,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>..\..\..\..\..\MatMagSoftware\02_Software\MatMag\MatMag\bin\Debug\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -77,6 +78,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Model.cs" />
     <Compile Include="SerialPort\SerialPortHandler.cs" />
+    <Compile Include="UI_Control\UIControl.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -1,14 +1,13 @@
 ﻿using GCS.HLB_UI;
 using GCS.MapControl;
 using GCS.SerialPort;
+using GCS.UI_Control;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Threading;
 using System.Windows;
 using GCS.Model;
-
-
-
+using System.Windows.Controls;
 
 namespace GCS
 {
@@ -20,10 +19,12 @@ namespace GCS
         HLBUI balloonControl;
         SerialPortHandler sPortHandler;
         GCS.Model.Model model;
+        UIControl guiControl;
         public MainWindow()
         {
             InitializeComponent();
             GmapControl mpaControl = new GmapControl(this);
+            guiControl = new UIControl(this);
             balloonControl = new HLBUI(this);
             sPortHandler = new SerialPortHandler(this, this.model);
 
@@ -36,5 +37,19 @@ namespace GCS
         }
 
 
+
+        
+
+        public void main(){
+            while (true)
+            {
+                txtCMD.AppendText
+            }
+        }
     }
+
+
+
+
+
 }

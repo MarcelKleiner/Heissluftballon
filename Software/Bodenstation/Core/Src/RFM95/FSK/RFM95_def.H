@@ -86,7 +86,7 @@
 #define	REG_AGC_THRESH_2LF			0x63
 #define	REG_AGC_THRESH_3LF			0x64
 
-
+#define REG_PLL_HF					0x70
 
 
 
@@ -98,8 +98,8 @@
 #define RF_OPMODE_MODULATION_FSK		0x00	//default
 #define RF_OPMODE_MODULATION_OOK		0x40
 
-#define RF_OPMODE_LFM_ON				0x00
-#define RF_OPMODE_LFM_OFF				0x08	//default
+#define RF_OPMODE_LFM_OFF				0x00
+#define RF_OPMODE_LFM_ON				0x08	//default
 
 #define RF_OPMODE_SLEEP					0x00
 #define RF_OPMODE_STBY 					0x01	//default
@@ -118,6 +118,9 @@
 
 #define RF_BITRATEMSB_4800            0x1A  // Default
 #define RF_BITRATELSB_4800            0x0B  // Default
+
+#define RF_BITRATEMSB_55555           0x02
+#define RF_BITRATELSB_55555           0x40
 
 #define RF_BITRATEMSB_9600            0x0D
 #define RF_BITRATELSB_9600            0x05
@@ -312,7 +315,7 @@
 
 #define RF_FRFMSB_868000			0xD9
 #define RF_FRFMID_868000			0x00
-#define RF_FRFLSB_868000			0x24
+#define RF_FRFLSB_868000			0x00
 
 #define RF_FRFMSB_915000			0xE4
 #define RF_FRFMID_915000			0xC0
@@ -690,6 +693,11 @@
 
 // RegIrqFlags1+2 (0x3E/0x3F) -> most read only -> for mor information see Datashee P98
 
+// RegIrqFlag2 (0x3F)
+#define RF_FIFO_OVERRUN				0x10
+
+
+
 // REG_DIO_MAPPING_1 (0x40) DIO 0-3	-> datasheet P
 #define RF_DIO_0_TX_PACKETSENT		0x00
 #define RF_DIO_0_RX_PAYLOADRDY		0x00
@@ -707,7 +715,6 @@
 #define RF_DIO_2_TX_FIFOFULL		0x0C
 
 #define RF_DIO_3_TX_TX_RDY			0x01
-#define RF_DIO_3_ALL_FIFOEMPTY		0x03
 
 // REG_DIO_MAPPING_2 (0x41) DIO 4-5
 #define RF_DIO_4_ALL_TEMP_LOWBAT	0x00
@@ -720,8 +727,8 @@
 #define RF_DIO_5_TX_RX_DATA			0x20
 #define RF_DIO_5_ALL_MODERDY		0x30
 
-#define RF_DIO_PREAMBLE_RSSI		0x01
-#define RF_DIO_PREAMBLE_INT			0x00
+#define RF_DIO_RSSI_INT				0x00
+#define RF_DIO_PREAMBLE_INT			0x01
 
 
 // RegVersion (0x42) -> read only

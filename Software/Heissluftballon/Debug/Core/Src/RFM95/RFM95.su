@@ -1,17 +1,17 @@
 RFM95.cpp:11:1:RFM95::RFM95()	16	static
-RFM95.cpp:18:25:RFM95::RFM_INIT_Typedef RFM95::initRFM(uint16_t, RFM95::SPI_HW_SETTINGS, RFM95::GPIO_HW_SETTINGS)	48	static
-RFM95.cpp:87:6:void RFM95::rfmTransmit(uint8_t*)	128	static
-RFM95.cpp:111:6:bool RFM95::isDataReady()	16	static
-RFM95.cpp:125:6:void RFM95::rfmReceive()	16	static
-RFM95.cpp:137:6:void RFM95::selectRFM()	16	static
-RFM95.cpp:147:6:void RFM95::deselectRFM()	16	static
-RFM95.cpp:159:19:HAL_StatusTypeDef RFM95::writeReg(uint8_t, uint8_t)	24	static
-RFM95.cpp:178:9:uint8_t RFM95::readReg(uint8_t)	32	static
-RFM95.cpp:195:25:RFM95::RFM_INIT_Typedef RFM95::writeFIFO(uint8_t*)	32	static
-RFM95.cpp:217:6:void RFM95::readFIFO()	24	static
-RFM95.cpp:235:6:void RFM95::setMode(RFM95::MODE)	24	static
-RFM95.cpp:264:6:bool RFM95::readGPIO(uint8_t)	32	static
-RFM95.cpp:312:6:void RFM95::setOutputPower(uint8_t)	16	static
-RFM95.cpp:324:6:void RFM95::resetRFM()	16	static
-RFM95.cpp:331:6:void RFM95::rcCalibration()	16	static
-RFM95.cpp:337:8:Stack* RFM95::rfmStack()	16	static
+RFM95.cpp:18:25:RFM95::RFM_INIT_Typedef RFM95::initRFM(uint16_t, RFM95::SPI_HW_SETTINGS, RFM95::GPIO_HW_SETTINGS)	104	static
+RFM95.cpp:149:6:void RFM95::rfmTransmit(uint8_t*)	16	static
+RFM95.cpp:161:6:bool RFM95::isDataReady()	16	static
+RFM95.cpp:175:6:void RFM95::rfmReceive()	16	static
+RFM95.cpp:187:6:void RFM95::selectRFM()	16	static
+RFM95.cpp:197:6:void RFM95::deselectRFM()	16	static
+RFM95.cpp:209:19:HAL_StatusTypeDef RFM95::writeReg(uint8_t, uint8_t)	24	static
+RFM95.cpp:228:9:uint8_t RFM95::readReg(uint8_t)	32	static
+RFM95.cpp:245:25:RFM95::RFM_INIT_Typedef RFM95::writeFIFO(uint8_t*)	32	static
+RFM95.cpp:267:6:void RFM95::readFIFO()	24	static
+RFM95.cpp:285:6:void RFM95::setMode(RFM95::MODE)	24	static
+RFM95.cpp:316:6:bool RFM95::readGPIO(uint8_t)	32	static
+RFM95.cpp:364:6:void RFM95::setOutputPower(uint8_t)	16	static
+RFM95.cpp:376:6:void RFM95::resetRFM()	16	static
+RFM95.cpp:383:6:void RFM95::rcCalibration()	16	static
+RFM95.cpp:389:8:Stack* RFM95::rfmStack()	16	static

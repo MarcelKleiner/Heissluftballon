@@ -52,10 +52,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Core/Src/AppMain/../FXPS7115D4/../config/I2C_Config.h \
  ../Core/Src/AppMain/../FXPS7115D4/../Model/Model.h \
  ../Core/Src/AppMain/../FXPS7115D4/../Model/../config/Config.h \
- ../Core/Src/AppMain/../RFM95/RFM95.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
- ../Core/Src/AppMain/../RFM95/Stack.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
+ ../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h \
  ../Core/Src/AppMain/../MAX31865/MAX31865TEMP.h \
  ../Core/Src/AppMain/../MAX31865/../Model/Model.h \
  ../Core/Src/AppMain/../MAX31865/../Model/../config/Config.h \
@@ -185,13 +182,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 
 ../Core/Src/AppMain/../FXPS7115D4/../Model/../config/Config.h:
 
-../Core/Src/AppMain/../RFM95/RFM95.h:
-
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
-
-../Core/Src/AppMain/../RFM95/Stack.h:
-
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
+../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h:
 
 ../Core/Src/AppMain/../MAX31865/MAX31865TEMP.h:
 

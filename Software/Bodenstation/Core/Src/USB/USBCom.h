@@ -14,7 +14,7 @@
 #define SRC_USB_USBCOM_H_
 
 
-#define USB_TIMEOUT		100
+#define USB_TIMEOUT		300
 
 
 

@@ -1,5 +1,5 @@
-Core/Src/RFM95/Stack.o: ../Core/Src/RFM95/Stack.cpp \
- ../Core/Src/RFM95/Stack.h \
+Core/Src/RFM95/FSK/Stack.o: ../Core/Src/RFM95/FSK/Stack.cpp \
+ ../Core/Src/RFM95/FSK/Stack.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -36,7 +36,7 @@ Core/Src/RFM95/Stack.o: ../Core/Src/RFM95/Stack.cpp \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h
 
-../Core/Src/RFM95/Stack.h:
+../Core/Src/RFM95/FSK/Stack.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 

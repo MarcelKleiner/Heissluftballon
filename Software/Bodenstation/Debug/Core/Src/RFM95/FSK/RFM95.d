@@ -1,5 +1,5 @@
-Core/Src/RFM95/Stack.o: ../Core/Src/RFM95/Stack.cpp \
- ../Core/Src/RFM95/Stack.h \
+Core/Src/RFM95/FSK/RFM95.o: ../Core/Src/RFM95/FSK/RFM95.cpp \
+ ../Core/Src/RFM95/FSK/RFM95.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -34,9 +34,31 @@ Core/Src/RFM95/Stack.o: ../Core/Src/RFM95/Stack.cpp \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h \
+ ../Core/Src/RFM95/FSK/RFM95_def.H ../Core/Src/RFM95/FSK/Stack.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/AppMain.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../Model/Model.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../Model/../config/Config.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../GPS/GPS.h ../Core/Inc/usart.h \
+ ../Core/Inc/main.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../GPS/../config/Config.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../GPS/../Model/Model.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../GPS/../Model/../config/Config.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../RFM95/LORA/RFM95LoRa.h \
+ ../Core/Inc/main.h ../Core/Inc/spi.h ../Core/Inc/gpio.h \
+ ../Core/Src/RFM95/FSK/../../AppMain/../USB/USBCom.h \
+ ../USB_DEVICE/App/usb_device.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../USB_DEVICE/App/usbd_cdc_if.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
+ ../Core/Inc/i2c.h
 
-../Core/Src/RFM95/Stack.h:
+../Core/Src/RFM95/FSK/RFM95.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 
@@ -107,3 +129,57 @@ Core/Src/RFM95/Stack.o: ../Core/Src/RFM95/Stack.cpp \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_usb.h:
 
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pcd_ex.h:
+
+../Core/Src/RFM95/FSK/RFM95_def.H:
+
+../Core/Src/RFM95/FSK/Stack.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/AppMain.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../Model/Model.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../Model/../config/Config.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../GPS/GPS.h:
+
+../Core/Inc/usart.h:
+
+../Core/Inc/main.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../GPS/../config/Config.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../GPS/../Model/Model.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../GPS/../Model/../config/Config.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../RFM95/LORA/RFM95LoRa.h:
+
+../Core/Inc/main.h:
+
+../Core/Inc/spi.h:
+
+../Core/Inc/gpio.h:
+
+../Core/Src/RFM95/FSK/../../AppMain/../USB/USBCom.h:
+
+../USB_DEVICE/App/usb_device.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+
+../USB_DEVICE/Target/usbd_conf.h:
+
+../USB_DEVICE/App/usbd_cdc_if.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
+
+../Core/Inc/i2c.h:

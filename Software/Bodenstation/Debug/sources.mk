@@ -30,7 +30,8 @@ SUBDIRS := \
 Core/Src/AppMain \
 Core/Src/GPS \
 Core/Src/Model \
-Core/Src/RFM95 \
+Core/Src/RFM95/FSK \
+Core/Src/RFM95/LORA \
 Core/Src/USB \
 Core/Src \
 Core/Startup \

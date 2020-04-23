@@ -8,11 +8,25 @@ namespace GCS.Model
 {
     class Model
     {
-
+        private List<char> rawData = new List<char>();
         public Model()
         {
 
         }
+
+        //raw data from USB Port
+
+        public void setRawData(char[] rawData)
+        {
+            this.rawData.Clear();
+            this.rawData = rawData.ToList<char>();
+        }
+        public List<char> getRawData()
+        {
+            return this.rawData;
+        }
+
+
 
         //GPS Data
         public int Altitude { get; set; }
@@ -27,6 +41,7 @@ namespace GCS.Model
         //Speed Data
         public int GroundSpeed { get; set; }
         public int ClimbRate { get; set; }
+
 
 
 

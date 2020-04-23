@@ -16,7 +16,8 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/USB/subdir.mk
 -include Core/Src/SHT21/subdir.mk
--include Core/Src/RFM95/subdir.mk
+-include Core/Src/RFM95/LORA/subdir.mk
+-include Core/Src/RFM95/FSK/subdir.mk
 -include Core/Src/Model/subdir.mk
 -include Core/Src/MAX31865/subdir.mk
 -include Core/Src/GPS/subdir.mk

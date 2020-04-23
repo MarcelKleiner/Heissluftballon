@@ -1,0 +1,17 @@
+RFM95.cpp:41:1:RFM95::RFM95()	16	static
+RFM95.cpp:47:25:RFM95::RFM_INIT_Typedef RFM95::initRFM(uint16_t, RFM95::SPI_HW_SETTINGS, RFM95::GPIO_HW_SETTINGS)	104	static
+RFM95.cpp:178:6:void RFM95::rfmTransmit(uint8_t*)	16	static
+RFM95.cpp:190:6:bool RFM95::isDataReady()	16	static
+RFM95.cpp:204:6:void RFM95::rfmReceive()	16	static
+RFM95.cpp:216:6:void RFM95::selectRFM()	16	static
+RFM95.cpp:226:6:void RFM95::deselectRFM()	16	static
+RFM95.cpp:238:19:HAL_StatusTypeDef RFM95::writeReg(uint8_t, uint8_t)	24	static
+RFM95.cpp:257:9:uint8_t RFM95::readReg(uint8_t)	32	static
+RFM95.cpp:274:25:RFM95::RFM_INIT_Typedef RFM95::writeFIFO(uint8_t*)	32	static
+RFM95.cpp:296:6:void RFM95::readFIFO()	24	static
+RFM95.cpp:314:6:void RFM95::setMode(RFM95::MODE)	24	static
+RFM95.cpp:345:6:bool RFM95::readGPIO(uint8_t)	32	static
+RFM95.cpp:393:6:void RFM95::setOutputPower(uint8_t)	16	static
+RFM95.cpp:405:6:void RFM95::resetRFM()	16	static
+RFM95.cpp:412:6:void RFM95::rcCalibration()	16	static
+RFM95.cpp:418:8:Stack* RFM95::rfmStack()	16	static

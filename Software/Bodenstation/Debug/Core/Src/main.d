@@ -44,10 +44,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
  ../Core/Src/AppMain/../GPS/../config/Config.h \
  ../Core/Src/AppMain/../GPS/../Model/Model.h \
  ../Core/Src/AppMain/../GPS/../Model/../config/Config.h \
- ../Core/Src/AppMain/../RFM95/RFM95.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
- ../Core/Src/AppMain/../RFM95/Stack.h \
- ../Core/Src/AppMain/../RFM95/RFM95_def.H \
+ ../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h \
  ../Core/Src/AppMain/../USB/USBCom.h ../USB_DEVICE/App/usbd_cdc_if.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
@@ -158,13 +155,7 @@ Core/Src/main.o: ../Core/Src/main.cpp ../Core/Inc/main.h \
 
 ../Core/Src/AppMain/../GPS/../Model/../config/Config.h:
 
-../Core/Src/AppMain/../RFM95/RFM95.h:
-
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
-
-../Core/Src/AppMain/../RFM95/Stack.h:
-
-../Core/Src/AppMain/../RFM95/RFM95_def.H:
+../Core/Src/AppMain/../RFM95/LORA/RFM95LoRa.h:
 
 ../Core/Src/AppMain/../USB/USBCom.h:
 

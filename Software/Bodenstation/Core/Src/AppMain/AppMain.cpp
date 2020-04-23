@@ -1,4 +1,3 @@
-
 /*
  * AppMain.cpp
  *
@@ -8,100 +7,105 @@
 
 #include "AppMain.h"
 
-
-//extern SPI_HandleTypeDef hspi1;
-
 AppMain::AppMain() {
 }
 
+void AppMain::initRFM() {
 
-void AppMain::initRFM(){
-	RFM95::GPIO_HW_SETTINGS gpioHwSettings;
-	RFM95::SPI_HW_SETTINGS spiHwSettings;
-
-	gpioHwSettings.gpioPin0 = RFM_DIO0_Pin;
-	gpioHwSettings.gpioPin1 = RFM_DIO1_Pin;
-	gpioHwSettings.gpioPin2 = RFM_DIO2_Pin;
-	gpioHwSettings.gpioPin3 = RFM_DIO3_Pin;
-	gpioHwSettings.gpioPin4 = RFM_DIO4_Pin;
-	gpioHwSettings.gpioPin5 = RFM_DIO5_Pin;
-
-	gpioHwSettings.gpioPort0 = RFM_DIO0_GPIO_Port;
-	gpioHwSettings.gpioPort1 = RFM_DIO1_GPIO_Port;
-	gpioHwSettings.gpioPort2 = RFM_DIO2_GPIO_Port;
-	gpioHwSettings.gpioPort3 = RFM_DIO3_GPIO_Port;
-	gpioHwSettings.gpioPort4 = RFM_DIO4_GPIO_Port;
-	gpioHwSettings.gpioPort5 = RFM_DIO5_GPIO_Port;
-
-	gpioHwSettings.gpioPortRST = RFM_RST_GPIO_Port;
-	gpioHwSettings.gpioPinRST = RFM_RST_Pin;
-
-	spiHwSettings.gpioPin = RFM_NSS_Pin;
-	spiHwSettings.gpioPort = RFM_NSS_GPIO_Port;
-	spiHwSettings.hspi = &hspi1;
-
-	rfm95.initRFM(TRANSMIT_DATA_LENGTH, spiHwSettings, gpioHwSettings);
+	rfm95.setFrequency(868000000);
+	rfm95.setSignalBandwidth(31.25E3);
+	rfm95.setSpreadingFactor(12);
+	rfm95.setCodingRate4(5);
+	if (!rfm95.begin(866E6)) {
+		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+	}
 }
 
+void AppMain::mainProg() {
 
-
-
-
-void AppMain::mainProg(){
-
-
-	uint8_t transmitData[TRANSMIT_DATA_LENGTH];
-	uint16_t transmitBuffer = 0;
-
-	for(int counter = 0; counter < TRANSMIT_DATA_LENGTH; counter++){
-			transmitData[counter] = 0;
-	}
 
 	HAL_Delay(100);
 	gps.init();
 	initRFM();
-	rfm95.rfmReceive();
-	Stack *rfmStack = rfm95.rfmStack();
 
-	while(1){
-		/*Prepare for Transmit*/
+	uint8_t transmitData[TRANSMIT_DATA_LENGTH];		//transmit Data
 
-		uint16_t stackCounter = 1;
-		transmitData[0] = '%';
-		//rfm95.rfmReceive();
-		//if(rfm95.isDataReady()){
-		//	while(!rfmStack->isEmpty()){
-				//transmitData[stackCounter] = rfmStack->pop();
-				//stackCounter++;
-		//	}
-		//}
+	uint8_t transmitUSB1[TRANSMIT_DATA_LENGTH/3];
+	uint8_t transmitUSB2[TRANSMIT_DATA_LENGTH/3];
+	uint8_t transmitUSB3[TRANSMIT_DATA_LENGTH/3];
 
-		uint8_t offset = stackCounter;	//Fortlaufend zu vorheriger index
-		uint8_t counter = 0;
-		char *gpsGCSTemp = model.getGPS_GCS();
-		for(counter = 0; counter < GPS_DATA_SIZE; counter++){
-			transmitData[offset] = gpsGCSTemp[counter];
-			offset++;
+	uint8_t txOffset 	= 0;	//offset after payload read
+	uint8_t counter 	= 0;	//Payload counter
+	uint8_t gpsCounter	= 0;	//GPS Counter
+	uint8_t splitCnt	= 0;	//sliptcounter
+	uint8_t packetSize 	= 0;	//packetsize from RFM95 receive
 
+	bool init			= true;
+	while (1) {
+
+		if(init){
+			init = false;
+		}else{
+			/*Prepare for Transmit*/
+
+			//-----------------------read RFM data------------------------------
+			packetSize = rfm95.parsePacket();
+			if (packetSize != 0) {
+				counter = 0;
+				while (rfm95.available()) {
+					transmitData[counter] = rfm95.read();
+					counter++;
+				}
+				counter++;
+				transmitData[counter] = rfm95.packetRssi();
+				HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+
+			//---------------------read GCS GPS data----------------------------
+			char *gpsData = model.getGPS_GCS();
+
+			txOffset = counter;
+
+			for (gpsCounter = 0; gpsCounter < GPS_DATA_SIZE; gpsCounter++) {
+				transmitData[txOffset] = gpsData[gpsCounter];
+				txOffset++;
+			}
+
+			//---------------------add sync bytes----------------------------
+			txOffset++;
+			transmitData[txOffset] = '!';
+			txOffset++;
+			transmitData[txOffset] = '*';
+			txOffset++;
+			transmitData[txOffset] = '%';
+
+			//---------------------split transmitData----------------------------
+			splitCnt = 0;
+			for(int a = 0; a<3;a++){
+				for(int b = 0; b < (TRANSMIT_DATA_LENGTH/3);b++ ){
+					if(splitCnt <= TRANSMIT_DATA_LENGTH){
+						switch (a) {
+							case 0:
+								transmitUSB1[b] = transmitData[splitCnt];
+								break;
+							case 1:
+								transmitUSB2[b] = transmitData[splitCnt];
+								break;
+							case 2:
+								transmitUSB3[b] = transmitData[splitCnt];
+								break;
+							default:
+								break;
+						}
+						splitCnt++;
+					}
+				}
+			}
+
+			usbCom.usbTransmit(transmitUSB1, (TRANSMIT_DATA_LENGTH/3));
+			usbCom.usbTransmit(transmitUSB2, (TRANSMIT_DATA_LENGTH/3));
+			usbCom.usbTransmit(transmitUSB3, (TRANSMIT_DATA_LENGTH/3));
 		}
-		transmitData[offset] = '*';
-		transmitData[offset+1] = '!';
-
-		/*Transmit over USB - use only in GCS*/
-		rfm95.rfmReceive();
-		usbCom.usbTransmit(transmitData, TRANSMIT_DATA_LENGTH);
-
-		/*Transmit over air - use only in device*/
-
-
-
-
-
-	//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(500);
-	//	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-		HAL_Delay(500);
-
+		}
 	}
 }
 
