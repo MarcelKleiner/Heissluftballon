@@ -24,9 +24,10 @@ namespace GCS
         {
             InitializeComponent();
             GmapControl mpaControl = new GmapControl(this);
-            guiControl = new UIControl(this);
-            balloonControl = new HLBUI(this);
             sPortHandler = new SerialPortHandler(this, this.model);
+            guiControl = new UIControl(this,sPortHandler );
+            balloonControl = new HLBUI(this);
+            
 
             /**Delete after end*/
             balloonControl.UpdateHeight(10);
@@ -36,16 +37,19 @@ namespace GCS
             balloonControl.UpdateHeight(9);
         }
 
-
+        private void addListener()
+        {
+         
+        }
 
         
-
-        public void main(){
-            while (true)
-            {
-                txtCMD.AppendText
-            }
+        public TextBox getTxtCom()
+        {
+            return txtCMD;
         }
+
+
+  
     }
 
 

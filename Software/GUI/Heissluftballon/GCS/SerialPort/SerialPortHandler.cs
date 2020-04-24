@@ -160,6 +160,17 @@ namespace GCS.SerialPort
         }
 
 
+        //*****************Eventhandling****************************************
+        public delegate void MessageReceivedHandler(Object sender);
+        public event MessageReceivedHandler MsgReceived;
+
+        protected virtual void  OnMsgReceived()
+        {
+            MsgReceived(this);
+        }
+        //**********************************************************************
+
+
         private void DataReceive_Event(object sender, SerialDataReceivedEventArgs e)
         {
             connectionFailCounter = 0;
@@ -172,7 +183,8 @@ namespace GCS.SerialPort
             char[] buffer = new char[bytes];
             sp.Read(buffer, 0, bytes);
 
-            model.setRawData(buffer);
+          //  model.setRawData(buffer);
+            OnMsgReceived();
 
         }
 
