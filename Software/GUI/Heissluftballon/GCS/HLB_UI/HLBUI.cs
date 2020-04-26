@@ -52,10 +52,10 @@ namespace GCS.HLB_UI
         private void initHumidity ()
         {
             SeriesCollection series = new SeriesCollection();
-            main.ccHumidity1.AxisX.Add(new Axis { });
+            main.ccHumidity.AxisX.Add(new Axis { });
             lsHumidity.Title = "Humidity";
             lsHumidity.Values = new ChartValues<double>();
-            main.ccHumidity1.Series = series;
+            main.ccHumidity.Series = series;
             series.Add(lsHumidity);
             lsHumidity.Stroke = Brushes.Blue;
             lsHumidity.Fill = Brushes.Transparent;
@@ -139,7 +139,7 @@ namespace GCS.HLB_UI
                     humidityCounter++;
                 }
                 lsHumidity.Values.Add(newPoint);
-                main.ccHumidity1.Update();
+                main.ccHumidity.Update();
                 main.lblHumidity.Content = newPoint.ToString("0.##");
             }));
         }

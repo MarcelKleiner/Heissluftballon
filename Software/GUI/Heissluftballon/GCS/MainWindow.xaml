@@ -139,9 +139,7 @@
                 <Label x:Name="label2_Copy" Content="Inside temperature [°C]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
                 <Label x:Name="label2_Copy1" Content="Humidity [%]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3"/>
                 <Label x:Name="label2_Copy2" Content="Air pressure [mbar]" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-                <Wpf:CartesianChart x:Name="ccHumidity" Margin="5" AnimationsSpeed="0" Grid.Row="4">
-                    <Wpf:CartesianChart x:Name="ccHumidity1" Margin="0"/>
-                </Wpf:CartesianChart>
+               
                 <Wpf:CartesianChart x:Name="ccAirPressure" Margin="5" AnimationsSpeed="0" Grid.Row="4" Grid.Column="1"/>
                 <Rectangle Grid.ColumnSpan="2" Fill="#FF7C7CFF" Height="1" Margin="0" Grid.Row="2" Stroke="#FF7C7CFF" VerticalAlignment="Bottom"/>
                 <Rectangle Grid.ColumnSpan="2" Fill="Black" Height="3" Margin="0,-3" Grid.Row="5" Stroke="Black" VerticalAlignment="Bottom"/>
@@ -149,6 +147,7 @@
                 <Label x:Name="lblPressure" Content="1024 mbar" HorizontalAlignment="Center" Margin="0" Grid.Row="5" VerticalAlignment="Center" Grid.Column="1"/>
                 <Label x:Name="lblTempOutside" Content="25.3 °C" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center"/>
                 <Label x:Name="lblTempInside" Content="68.9 °C" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"/>
+                <Wpf:CartesianChart x:Name="ccHumidity" Margin="5" Grid.Row="4" AnimationsSpeed="0"/>
             </Grid>
             <Label x:Name="label_Copy" Content="GCS Data" HorizontalAlignment="Center" Margin="236,2,236,1" VerticalAlignment="Center" Grid.Row="4" FontSize="20" FontWeight="Bold" Height="37" Width="98"/>
             <Grid Margin="0" Grid.Row="5">

@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Threading;
+using System.Windows.Media;
 
 namespace GCS.SerialPort
 {
@@ -17,12 +18,12 @@ namespace GCS.SerialPort
         System.IO.Ports.SerialPort sPort;
         System.Timers.Timer connectionTimer;
 
+        bool init = false;
 
 
         /*Global Variable declaration*/
         Boolean portOpen = false;
         int connectionFailCounter = 0;
-        char[] data;
         Thread serialThread;
 
         public SerialPortHandler(MainWindow main,GCS.Model.Model_c model)
@@ -32,7 +33,7 @@ namespace GCS.SerialPort
             AddMouseListener();
             TimerConfig();
             InitCOMPort();
-            serialThread = new Thread(readMsg);
+            
         }
 
         private void TimerConfig()
@@ -60,6 +61,23 @@ namespace GCS.SerialPort
             {
                 main.cbComPort.Items.Add(portName);
             }
+
+            if(init == false)
+            {
+                sPort = new System.IO.Ports.SerialPort
+                {
+                    BaudRate = 115200,
+                    
+                    Parity = Parity.None,
+                    StopBits = StopBits.One,
+                    DataBits = 8,
+                    Handshake = Handshake.None,
+                    RtsEnable = true
+                };
+                sPort.DataReceived += new SerialDataReceivedEventHandler(DataReceive_Event);
+                init = true;
+            }
+
         }
 
 
@@ -69,25 +87,18 @@ namespace GCS.SerialPort
             {
                 try
                 {
-                    sPort = new System.IO.Ports.SerialPort
-                    {
-                        BaudRate = 115200,
-                        PortName = main.cbComPort.Text,
-                        Parity = Parity.None,
-                        StopBits = StopBits.One,
-                        DataBits = 8,
-                        Handshake = Handshake.None,
-                        RtsEnable = true
-                    };
-                    sPort.DataReceived += new SerialDataReceivedEventHandler(DataReceive_Event);
+
+                    sPort.PortName  = main.cbComPort.Text;
                     sPort.Open();
                     portOpen = true;
                     main.txtCMD.AppendText(" \r\n Connected with " + sPort.PortName);
                     connectionTimer.Start();
+                    serialThread = new Thread(readMsg);
                     serialThread.Start();
                 }
-                catch (Exception)
+                catch (Exception exp)
                 {
+                    MessageBox.Show(exp.ToString());
                     main.txtCMD.AppendText(" \r\n Connection to Target failed");
                     if (portOpen)
                     {
@@ -111,16 +122,17 @@ namespace GCS.SerialPort
                     main.txtCMD.AppendText(" \r\n Port " + portName + " disconnected");
                     portOpen = false;                       //reset portOpen flag
                     connectionTimer.Stop();
-                    portOpen = false;
                 }
                 catch
                 {
                     main.txtCMD.AppendText(" \r\n Disconnection failed");
+                    connectionTimer.Stop();
                 }
             }
             else
             {
                 main.txtCMD.AppendText(" \r\n No Open Port");
+                connectionTimer.Stop();
             }
         }
 
@@ -142,15 +154,15 @@ namespace GCS.SerialPort
         /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            if(connectionFailCounter > 4)
+            if(connectionFailCounter > 10)
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
                     main.txtCMD.AppendText(" \r\n target disconnected...");
+                    main.lblConnStatus.Content = "Disconnect";
+                    main.lblConnStatus.Background = Brushes.Red;
+                    connectionTimer.Stop();
                 }));
-                connectionTimer.Stop();
-                sPort.Close();
-                portOpen = false;
             }
             else
             {
@@ -187,134 +199,143 @@ namespace GCS.SerialPort
             byte[] buffer = new byte[2];
             List<char> gpsGcs = new List<char>();
             List<char> gpsDevice = new List<char>();
-            while (portOpen)
+
+            try
             {
-                   msgByte = (byte)sPort.ReadByte();
-
-
-                switch (state)
+                while (portOpen)
                 {
-                    case 0:
-                        if(msgByte == '%')
-                        {
-                            state = 1;
-                        }
-                        break;
-                    case 1:
-                        if (msgByte == '*')
-                        {
-                            state = 2;
-                        }
-                        break;
-                    case 2:
-                        if (msgByte == '!')
-                        {
-                            state = 3;
-                        }
-                        break;
-                    case 3:
-                        //---------------------Humidity------------------------------
-                        if(bufCounter == 0)
-                        {
-                            buffer[bufCounter] = msgByte;
-                            bufCounter++;
-                        }
-                        else
-                        {
-                            buffer[bufCounter] = msgByte;
-                            model.humidityRaw = buffer[0] + ((uint)buffer[1] << 8);
-                            bufCounter = 0;
-                            state = 4;
-                        }
-                        break;
-                    case 4:
-                        //---------------------Temp Outside------------------------------
-                        if (bufCounter == 0)
-                        {
-                            buffer[bufCounter] = msgByte;
-                            bufCounter++;
-                        }
-                        else
-                        {
-                            buffer[bufCounter] = msgByte;
-                            model.tempOutsideRaw = buffer[0] + ((int)buffer[1] << 8);
-                            bufCounter = 0;
-                            state = 5;
-                        }
-                        break;
-                    case 5:
-                        //---------------------Pressure------------------------------
-                        if (bufCounter == 0)
-                        {
-                            buffer[bufCounter] = msgByte;
-                            bufCounter++;
-                        }
-                        else
-                        {
-                            buffer[bufCounter] = msgByte;
-                            model.pressureRaw = buffer[0] + ((uint)buffer[1] << 8);
-                            bufCounter = 0;
-                            state = 6;
-                        }
-                        break;
-                    case 6:
-                        //---------------------Temp Inside------------------------------
-                        if (bufCounter == 0)
-                        {
-                            buffer[bufCounter] = msgByte;
-                            bufCounter++;
-                        }
-                        else
-                        {
-                            buffer[bufCounter] = msgByte;
-                            model.tempInsideRaw = buffer[0] + ((int)buffer[1] << 8);
-                            bufCounter = 0;
-                            state = 7;
-                        }
-                        break;
-                    case 7:
-                        if((bufCounter > 0 && msgByte == '$') ||(bufCounter > 80))
-                        {
-                            model.setGpsGCSRaw(gpsGcs);
-                            bufCounter=0;
-                            state = 8;
-                        }
-                        else
-                        {
-                            bufCounter++;
-                            gpsGcs.Add((char)msgByte);
-                        }
-                        break;
-                    case 8:
-                        if ((bufCounter > 0 && msgByte == '$' )||( bufCounter > 80))
-                        {
-                            model.setGpsDeviceRaw(gpsDevice);
-                            bufCounter = 0;
-                            state = 0;
-                            OnMsgReceived();
-                        }
-                        else
-                        {
-                            bufCounter++;
-                            gpsDevice.Add((char)msgByte);
-                        }
-                        break;       
-                    default:
-                        break;
+                    msgByte = (byte)sPort.ReadByte();
+
+
+                    switch (state)
+                    {
+                        case 0:
+                            if (msgByte == '%')
+                            {
+                                state = 1;
+                            }
+                            break;
+                        case 1:
+                            if (msgByte == '*')
+                            {
+                                state = 2;
+                            }
+                            break;
+                        case 2:
+                            if (msgByte == '!')
+                            {
+                                state = 3;
+                            }
+                            break;
+                        case 3:
+                            //---------------------Humidity------------------------------
+                            if (bufCounter == 0)
+                            {
+                                buffer[bufCounter] = msgByte;
+                                bufCounter++;
+                            }
+                            else
+                            {
+                                buffer[bufCounter] = msgByte;
+                                model.humidityRaw = buffer[0] + ((uint)buffer[1] << 8);
+                                bufCounter = 0;
+                                state = 4;
+                            }
+                            break;
+                        case 4:
+                            //---------------------Temp Outside------------------------------
+                            if (bufCounter == 0)
+                            {
+                                buffer[bufCounter] = msgByte;
+                                bufCounter++;
+                            }
+                            else
+                            {
+                                buffer[bufCounter] = msgByte;
+                                model.tempOutsideRaw = buffer[0] + ((int)buffer[1] << 8);
+                                bufCounter = 0;
+                                state = 5;
+                            }
+                            break;
+                        case 5:
+                            //---------------------Pressure------------------------------
+                            if (bufCounter == 0)
+                            {
+                                buffer[bufCounter] = msgByte;
+                                bufCounter++;
+                            }
+                            else
+                            {
+                                buffer[bufCounter] = msgByte;
+                                model.pressureRaw = buffer[0] + ((uint)buffer[1] << 8);
+                                bufCounter = 0;
+                                state = 6;
+                            }
+                            break;
+                        case 6:
+                            //---------------------Temp Inside------------------------------
+                            if (bufCounter == 0)
+                            {
+                                buffer[bufCounter] = msgByte;
+                                bufCounter++;
+                            }
+                            else
+                            {
+                                buffer[bufCounter] = msgByte;
+                                model.tempInsideRaw = buffer[0] + ((int)buffer[1] << 8);
+                                bufCounter = 0;
+                                state = 7;
+                            }
+                            break;
+                        case 7:
+                            if ((bufCounter > 0 && msgByte == '$') || (bufCounter > 80))
+                            {
+                                model.setGpsGCSRaw(gpsGcs);
+                                bufCounter = 0;
+                                state = 8;
+                            }
+                            else
+                            {
+                                bufCounter++;
+                                gpsGcs.Add((char)msgByte);
+                            }
+                            break;
+                        case 8:
+                            if ((bufCounter > 0 && msgByte == '$') || (bufCounter > 80))
+                            {
+                                model.setGpsDeviceRaw(gpsDevice);
+                                bufCounter = 0;
+                                state = 0;
+                                OnMsgReceived();
+                            }
+                            else
+                            {
+                                bufCounter++;
+                                gpsDevice.Add((char)msgByte);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                    packetCounter++;
+                    if (packetCounter > 190)
+                    {
+                        OnMsgReceived();
+                        state = 0;
+                        bufCounter = 0;
+                        packetCounter = 0;
+                    }
+
+
                 }
-
-
-                packetCounter++;
-                if(packetCounter > 190)
-                {
-                    OnMsgReceived();
-                    state = 0;
-                    bufCounter = 0;
-                    packetCounter = 0;
-                }
-
+            }
+            catch
+            {
 
             }
+    
         }
 
         private void DataReceive_Event(object sender, SerialDataReceivedEventArgs e)
@@ -322,15 +343,11 @@ namespace GCS.SerialPort
             connectionFailCounter = 0;
             connectionTimer.Stop();     //restart Timer
             connectionTimer.Start();
-
-       
-            
+            Application.Current.Dispatcher.Invoke(new Action(() =>{
+                main.lblConnStatus.Content = "COM" + sPort.PortName;
+                main.lblConnStatus.Background = Brushes.Green;
+            }));
 
         }
-
-
-
-
-
         }
 }

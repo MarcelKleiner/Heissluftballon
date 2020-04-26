@@ -77,20 +77,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marce\\.nuget\\packages\\": {}
+    "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+      "projectUniqueName": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
       "projectName": "GCS",
-      "projectPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
-      "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
+      "projectPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+      "packagesPath": "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\",
+      "outputPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Marcel-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

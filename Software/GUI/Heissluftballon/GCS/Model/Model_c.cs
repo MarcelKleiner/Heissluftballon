@@ -33,6 +33,7 @@ namespace GCS.Model
         //GPS raw data
         public void setGpsDeviceRaw(List<char> gpsList)
         {
+            gpsDeviceRaw.Clear();
             gpsDeviceRaw = gpsList;
         }
         public List<char> getGpsDeviceRaw()
@@ -42,6 +43,7 @@ namespace GCS.Model
 
         public void setGpsGCSRaw(List<char> gpsList)
         {
+            gpsGCSRaw.Clear();
             gpsGCSRaw = gpsList;
         }
         public List<char> getGpsGCSRaw()
