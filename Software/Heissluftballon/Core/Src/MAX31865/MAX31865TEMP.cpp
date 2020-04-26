@@ -29,6 +29,7 @@ void MAX31865_TEMP::init(uint8_t wires){
 
 bool MAX31865_TEMP::readTemp(){
 
+	uint8_t error;
 	uint8_t buff[1];
 	MAX31865_read(0x07, buff, 1);
 
@@ -44,8 +45,7 @@ bool MAX31865_TEMP::readTemp(){
     // Combine 2 bytes into 1 number, and shift 1 down to remove fault bit
     uint16_t data = buffer[0] << 8;
     data |= buffer[1];
-
-
+    data >>= 1;
 
     // Disable bias voltage to reduce power usage
     enableBias(OFF);

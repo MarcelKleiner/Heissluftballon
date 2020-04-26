@@ -1,4 +1,4 @@
-15841120157543007
+15837947275145860
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -48979,13 +48979,6 @@ F_3425
 2
 2
 MK_Footprints
-HQFN-16-1EP_4x4mm_P0.8mm_EP2.7x2.7mm
-
-
-0
-21
-17
-MK_Footprints
 L_4.8x4.8_H1.8
 
 
@@ -49027,13 +49020,6 @@ TDFN_8
 0
 8
 8
-MK_Footprints
-TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal
-
-
-0
-2
-2
 MK_Footprints
 Verbindungsstift
 

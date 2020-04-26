@@ -76,7 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Model_c.cs" />
     <Compile Include="SerialPort\SerialPortHandler.cs" />
     <Compile Include="UI_Control\UIControl.cs" />
     <Page Include="MainWindow.xaml">

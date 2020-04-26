@@ -18,23 +18,31 @@ namespace GCS
     {
         HLBUI balloonControl;
         SerialPortHandler sPortHandler;
-        GCS.Model.Model model;
+        GCS.Model.Model_c model;
+
+
+
         UIControl guiControl;
+        Thread guiUpdate;
         public MainWindow()
         {
             InitializeComponent();
+            this.model = new Model_c();
             GmapControl mpaControl = new GmapControl(this);
-            sPortHandler = new SerialPortHandler(this, this.model);
-            guiControl = new UIControl(this,sPortHandler );
-            balloonControl = new HLBUI(this);
+            sPortHandler = new SerialPortHandler(this, model);
             
+            balloonControl = new HLBUI(this);
+            guiControl = new UIControl(this, sPortHandler, model, balloonControl);
 
+            guiUpdate = new Thread(guiControl.updateGui);
+            guiUpdate.Start();
             /**Delete after end*/
             balloonControl.UpdateHeight(10);
             balloonControl.UpdateHeight(4);
             balloonControl.UpdateHeight(6);
             balloonControl.UpdateHeight(8);
             balloonControl.UpdateHeight(9);
+
         }
 
         private void addListener()
