@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj": {}
+    "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj": {}
   },
   "projects": {
-    "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj": {
+    "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
         "projectName": "GCS",
-        "projectPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
-        "packagesPath": "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\",
-        "outputPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
+        "projectPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+        "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
-          "C:\\Users\\Marcel-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,10 @@
       "frameworks": {
         "net472": {
           "dependencies": {
+            "GMap.NET.Presentation": {
+              "target": "Package",
+              "version": "[1.7.5, )"
+            },
             "GMap.NET.WindowsForms": {
               "target": "Package",
               "version": "[1.7.5, )"

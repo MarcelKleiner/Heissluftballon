@@ -53,3 +53,4 @@ D:\Git_Repos\Heissluftballoon\Software\GUI\Heissluftballon\GCS\bin\Debug\GCS.exe
 D:\Git_Repos\Heissluftballoon\Software\GUI\Heissluftballon\GCS\bin\Debug\GCS.exe
 D:\Git_Repos\Heissluftballoon\Software\GUI\Heissluftballon\GCS\bin\Debug\GCS.pdb
 D:\Git_Repos\Heissluftballoon\Software\GUI\Heissluftballon\GCS\obj\Debug\GCS.csproj.CopyComplete
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\GCS\bin\Debug\Microsoft.Maps.MapControl.WPF.dll

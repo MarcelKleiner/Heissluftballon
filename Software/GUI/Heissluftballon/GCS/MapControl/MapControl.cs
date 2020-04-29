@@ -10,7 +10,7 @@ namespace GCS.MapControl
 {
     class GmapControl
     {
-
+        
         private MainWindow main;
         public GmapControl(MainWindow main)
         {
@@ -22,18 +22,19 @@ namespace GCS.MapControl
 
         private void InitMap()
         {
-                 main.gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
-                 GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-                 main.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
+            main.gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
+            main.gmap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionWithoutCenter;
 
-                main.gmap.MaxZoom = 22;
-                 main.gmap.MinZoom = 1;
-                 main.gmap.ShowCenter = false;
-                 main.gmap.CanDragMap = true;
-                 main.gmap.DragButton = MouseButton.Left;
+            main.gmap.MaxZoom = 22;
+            main.gmap.MinZoom = 1;
+            main.gmap.ShowCenter = false;
+            main.gmap.CanDragMap = true;
+            main.gmap.DragButton = System.Windows.Forms.MouseButtons.Left;
 
-                 main.gmap.Zoom = 10;
-                 main.gmap.Position = new GMap.NET.PointLatLng(47.26505, 8.43224);
+            main.gmap.Zoom = 10;
+            main.gmap.Position = new GMap.NET.PointLatLng(47.26505, 8.43224);
+            main.winFormHost.Child = main.gmap;
         }
 
         private void AddMouseListener()

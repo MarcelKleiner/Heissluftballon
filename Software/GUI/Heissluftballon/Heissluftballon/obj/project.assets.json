@@ -2,6 +2,17 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -11,19 +22,21 @@
         "runtime": {
           "lib/net40/GMap.NET.Core.dll": {},
           "lib/net40/GMap.NET.WindowsForms.dll": {}
-        }
-      },
-      "Microsoft.Maps.MapControl.WPF/1.0.0.3": {
-        "type": "package",
-        "compile": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
-        },
-        "runtime": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -33,19 +46,21 @@
         "runtime": {
           "lib/net40/GMap.NET.Core.dll": {},
           "lib/net40/GMap.NET.WindowsForms.dll": {}
-        }
-      },
-      "Microsoft.Maps.MapControl.WPF/1.0.0.3": {
-        "type": "package",
-        "compile": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
-        },
-        "runtime": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7.2/win-x64": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -55,19 +70,21 @@
         "runtime": {
           "lib/net40/GMap.NET.Core.dll": {},
           "lib/net40/GMap.NET.WindowsForms.dll": {}
-        }
-      },
-      "Microsoft.Maps.MapControl.WPF/1.0.0.3": {
-        "type": "package",
-        "compile": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
-        },
-        "runtime": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
         }
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -77,20 +94,26 @@
         "runtime": {
           "lib/net40/GMap.NET.Core.dll": {},
           "lib/net40/GMap.NET.WindowsForms.dll": {}
-        }
-      },
-      "Microsoft.Maps.MapControl.WPF/1.0.0.3": {
-        "type": "package",
-        "compile": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
-        },
-        "runtime": {
-          "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll": {}
         }
       }
     }
   },
   "libraries": {
+    "GMap.NET.Presentation/1.7.5": {
+      "sha512": "U+VJoNY8dP7xT8y4kmt7qwPOX8RM9hi1ojEu96zp290qEms7DdYU0HvEbJMVpEZdBBdYO7cXstljnIIpIkXUsA==",
+      "type": "package",
+      "path": "gmap.net.presentation/1.7.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gmap.net.presentation.1.7.5.nupkg.sha512",
+        "gmap.net.presentation.nuspec",
+        "lib/net35/GMap.NET.Core.dll",
+        "lib/net35/GMap.NET.WindowsPresentation.dll",
+        "lib/net40/GMap.NET.Core.dll",
+        "lib/net40/GMap.NET.WindowsPresentation.dll"
+      ]
+    },
     "GMap.NET.WindowsForms/1.7.5": {
       "sha512": "VA2836bCMgIAhcvpQIJpmDJrQFm+nnH8AiqKzGqvMAoamO+UqAoNy6b+YPKNAqS1+2RRAcq12nrC582tUcb90A==",
       "type": "package",
@@ -105,42 +128,29 @@
         "lib/net40/GMap.NET.Core.dll",
         "lib/net40/GMap.NET.WindowsForms.dll"
       ]
-    },
-    "Microsoft.Maps.MapControl.WPF/1.0.0.3": {
-      "sha512": "P5Xys9PH/NIZY8qPASd03VOrZ/eXyS1hSoruR7oM+Otn98DkvUD1LwO8m9Aro4/5jCU1BgRmOTJrIQm5y9UHnQ==",
-      "type": "package",
-      "path": "microsoft.maps.mapcontrol.wpf/1.0.0.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40-Client/Microsoft.Maps.MapControl.WPF.dll",
-        "lib/net40-Client/Microsoft.Maps.MapControl.WPF.xml",
-        "microsoft.maps.mapcontrol.wpf.1.0.0.3.nupkg.sha512",
-        "microsoft.maps.mapcontrol.wpf.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
-      "GMap.NET.WindowsForms >= 1.7.5",
-      "Microsoft.Maps.MapControl.WPF >= 1.0.0.3"
+      "GMap.NET.Presentation >= 1.7.5",
+      "GMap.NET.WindowsForms >= 1.7.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\": {}
+    "C:\\Users\\marce\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\MapTest_dontWork.csproj",
+      "projectUniqueName": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\MapTest_dontWork.csproj",
       "projectName": "MapTest_dontWork",
-      "projectPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\MapTest_dontWork.csproj",
-      "packagesPath": "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\obj\\",
+      "projectPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\MapTest_dontWork.csproj",
+      "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\Heissluftballon\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Marcel-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -159,13 +169,13 @@
     "frameworks": {
       "net472": {
         "dependencies": {
-          "GMap.NET.WindowsForms": {
+          "GMap.NET.Presentation": {
             "target": "Package",
             "version": "[1.7.5, )"
           },
-          "Microsoft.Maps.MapControl.WPF": {
+          "GMap.NET.WindowsForms": {
             "target": "Package",
-            "version": "[1.0.0.3, )"
+            "version": "[1.7.5, )"
           }
         }
       }

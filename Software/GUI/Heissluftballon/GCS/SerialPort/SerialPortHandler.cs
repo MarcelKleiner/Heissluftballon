@@ -192,20 +192,16 @@ namespace GCS.SerialPort
         {
             byte msgByte;
             int state = 0;
-
-            int bufCounter = 0;
             int packetCounter = 0;
+            int stringCounter = 0;
+            List<char> rawString = new List<char>();
 
-            byte[] buffer = new byte[2];
-            List<char> gpsGcs = new List<char>();
-            List<char> gpsDevice = new List<char>();
-
-            try
+            while (portOpen)
             {
-                while (portOpen)
-                {
+                try
+            {
+ 
                     msgByte = (byte)sPort.ReadByte();
-
 
                     switch (state)
                     {
@@ -220,123 +216,84 @@ namespace GCS.SerialPort
                             {
                                 state = 2;
                             }
+                            else
+                            {
+                                state = 0;
+                            }
                             break;
                         case 2:
                             if (msgByte == '!')
                             {
                                 state = 3;
+                                    rawString.Clear();
+                                    stringCounter = 0;
+                            }
+                            else
+                            {
+                                state = 0;
                             }
                             break;
                         case 3:
                             //---------------------Humidity------------------------------
-                            if (bufCounter == 0)
+                            if(msgByte == '!')
                             {
-                                buffer[bufCounter] = msgByte;
-                                bufCounter++;
-                            }
-                            else
-                            {
-                                buffer[bufCounter] = msgByte;
-                                model.humidityRaw = buffer[0] + ((uint)buffer[1] << 8);
-                                bufCounter = 0;
                                 state = 4;
                             }
+                            rawString.Add((char)msgByte);
+                            stringCounter++;
                             break;
-                        case 4:
-                            //---------------------Temp Outside------------------------------
-                            if (bufCounter == 0)
+                        case 4:                         
+                            if (msgByte == '*')
                             {
-                                buffer[bufCounter] = msgByte;
-                                bufCounter++;
-                            }
-                            else
-                            {
-                                buffer[bufCounter] = msgByte;
-                                model.tempOutsideRaw = buffer[0] + ((int)buffer[1] << 8);
-                                bufCounter = 0;
                                 state = 5;
                             }
+                            else
+                            {
+                                state = 3;
+                            }
+                            rawString.Add((char)msgByte);
+                            stringCounter++;
                             break;
                         case 5:
-                            //---------------------Pressure------------------------------
-                            if (bufCounter == 0)
+                            if (msgByte == '%')
                             {
-                                buffer[bufCounter] = msgByte;
-                                bufCounter++;
-                            }
-                            else
-                            {
-                                buffer[bufCounter] = msgByte;
-                                model.pressureRaw = buffer[0] + ((uint)buffer[1] << 8);
-                                bufCounter = 0;
-                                state = 6;
-                            }
-                            break;
-                        case 6:
-                            //---------------------Temp Inside------------------------------
-                            if (bufCounter == 0)
-                            {
-                                buffer[bufCounter] = msgByte;
-                                bufCounter++;
-                            }
-                            else
-                            {
-                                buffer[bufCounter] = msgByte;
-                                model.tempInsideRaw = buffer[0] + ((int)buffer[1] << 8);
-                                bufCounter = 0;
-                                state = 7;
-                            }
-                            break;
-                        case 7:
-                            if ((bufCounter > 0 && msgByte == '$') || (bufCounter > 80))
-                            {
-                                model.setGpsGCSRaw(gpsGcs);
-                                bufCounter = 0;
-                                state = 8;
-                            }
-                            else
-                            {
-                                bufCounter++;
-                                gpsGcs.Add((char)msgByte);
-                            }
-                            break;
-                        case 8:
-                            if ((bufCounter > 0 && msgByte == '$') || (bufCounter > 80))
-                            {
-                                model.setGpsDeviceRaw(gpsDevice);
-                                bufCounter = 0;
                                 state = 0;
-                                OnMsgReceived();
+                                if(rawString.Count < 190)
+                                {
+                                    model.SetRawData(rawString);
+                                    OnMsgReceived();
+                                    Application.Current.Dispatcher.Invoke(new Action(() =>
+                                    {
+                                        main.txtCMD.AppendText("Data receive" + packetCounter + "\n");
+                                    }));
+                                    packetCounter++;
+                                }
+                                //daten angekommen
                             }
                             else
                             {
-                                bufCounter++;
-                                gpsDevice.Add((char)msgByte);
+                                state = 3;
                             }
+                            rawString.Add((char)msgByte);
+                            stringCounter++;
                             break;
                         default:
+                            state = 0;
                             break;
                     }
-
-
-                    packetCounter++;
-                    if (packetCounter > 190)
-                    {
-                        OnMsgReceived();
-                        state = 0;
-                        bufCounter = 0;
-                        packetCounter = 0;
-                    }
-
-
-                }
+                
             }
-            catch
+            catch(Exception ex)
             {
-
+                Application.Current.Dispatcher.Invoke(new Action(() =>
+                {
+                  //  main.txtCMD.AppendText("Packet error");
+                    main.txtCMD.AppendText(ex.ToString());
+                }));
             }
-    
         }
+
+    }
 
         private void DataReceive_Event(object sender, SerialDataReceivedEventArgs e)
         {

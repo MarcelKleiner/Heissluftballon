@@ -47,7 +47,7 @@ void AppMain::mainProg() {
 		max31865.readTemp();			//TempInside
 
 		/*Prepare for Transmit*/
-
+		/*-------------add start synchron----------------*/
 		transmitData[0] = '%';
 		transmitData[1] = '*';
 		transmitData[2] = '!';
@@ -55,28 +55,37 @@ void AppMain::mainProg() {
 		transmitBuffer = model.getHumidity();
 		transmitData[3] = transmitBuffer;
 		transmitData[4] = transmitBuffer >> 8;
+		transmitData[5] = '$';
+		transmitData[6] = '!';
 		/*-------------Temp Outside----------------*/
 		transmitBuffer = model.getTempOutside();
-		transmitData[5] = transmitBuffer;
-		transmitData[6] = transmitBuffer >> 8;
-		/*-------------Pressure----------------*/
-		transmitBuffer = model.getPressure();
 		transmitData[7] = transmitBuffer;
 		transmitData[8] = transmitBuffer >> 8;
+		transmitData[9] = '$';
+		transmitData[10] = '!';
+		/*-------------Pressure----------------*/
+		transmitBuffer = model.getPressure();
+		transmitData[11] = transmitBuffer;
+		transmitData[12] = transmitBuffer >> 8;
+		transmitData[13] = '$';
+		transmitData[14] = '!';
 		/*-------------Temp Balloon----------------*/
 		transmitBuffer = model.getTempInsed();
-		transmitData[9] = transmitBuffer;
-		transmitData[10] = transmitBuffer >> 8;
-		uint8_t offset = 11;	//Fortlaufend zu vorheriger index
+		transmitData[15] = transmitBuffer;
+		transmitData[16] = transmitBuffer >> 8;
+		transmitData[17] = '$';
+		transmitData[18] = '!';
+		uint8_t offset = 19;	//Fortlaufend zu vorheriger index
 		/*-------------GPS Data----------------*/
 		char *gpsDeviceTemp = model.getGPS_Device();
 		for (uint8_t counter = 0; counter < GPS_DATA_SIZE; counter++) {
 			transmitData[offset] = gpsDeviceTemp[counter];
 			offset++;
 		}
+		transmitData[offset+1] = '$';
+		transmitData[offset+2] = '!';
 
-		/*Transmit over USB - use only in GCS*/
-		//usbCom.usbTransmit(transmitData, offset);
+
 		//rfm95.rfmTransmit(transmitData);
 		rfm95.beginPacket();
 		rfm95.write(transmitData, offset);

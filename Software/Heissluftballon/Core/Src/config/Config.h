@@ -8,7 +8,7 @@
 #ifndef SRC_CONFIG_CONFIG_H_
 #define SRC_CONFIG_CONFIG_H_
 
-#define GPS_DATA_SIZE		80
+#define GPS_DATA_SIZE		75
 
 
 

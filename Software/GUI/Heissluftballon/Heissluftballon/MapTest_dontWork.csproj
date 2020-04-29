@@ -102,11 +102,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GMap.NET.WindowsForms">
+    <PackageReference Include="GMap.NET.Presentation">
       <Version>1.7.5</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Maps.MapControl.WPF">
-      <Version>1.0.0.3</Version>
+    <PackageReference Include="GMap.NET.WindowsForms">
+      <Version>1.7.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

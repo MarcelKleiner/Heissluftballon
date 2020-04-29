@@ -2,6 +2,17 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -15,6 +26,17 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -28,6 +50,17 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x64": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -41,6 +74,17 @@
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
+      "GMap.NET.Presentation/1.7.5": {
+        "type": "package",
+        "compile": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        },
+        "runtime": {
+          "lib/net40/GMap.NET.Core.dll": {},
+          "lib/net40/GMap.NET.WindowsPresentation.dll": {}
+        }
+      },
       "GMap.NET.WindowsForms/1.7.5": {
         "type": "package",
         "compile": {
@@ -55,6 +99,21 @@
     }
   },
   "libraries": {
+    "GMap.NET.Presentation/1.7.5": {
+      "sha512": "U+VJoNY8dP7xT8y4kmt7qwPOX8RM9hi1ojEu96zp290qEms7DdYU0HvEbJMVpEZdBBdYO7cXstljnIIpIkXUsA==",
+      "type": "package",
+      "path": "gmap.net.presentation/1.7.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gmap.net.presentation.1.7.5.nupkg.sha512",
+        "gmap.net.presentation.nuspec",
+        "lib/net35/GMap.NET.Core.dll",
+        "lib/net35/GMap.NET.WindowsPresentation.dll",
+        "lib/net40/GMap.NET.Core.dll",
+        "lib/net40/GMap.NET.WindowsPresentation.dll"
+      ]
+    },
     "GMap.NET.WindowsForms/1.7.5": {
       "sha512": "VA2836bCMgIAhcvpQIJpmDJrQFm+nnH8AiqKzGqvMAoamO+UqAoNy6b+YPKNAqS1+2RRAcq12nrC582tUcb90A==",
       "type": "package",
@@ -73,24 +132,25 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
+      "GMap.NET.Presentation >= 1.7.5",
       "GMap.NET.WindowsForms >= 1.7.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\": {}
+    "C:\\Users\\marce\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+      "projectUniqueName": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
       "projectName": "GCS",
-      "projectPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
-      "packagesPath": "C:\\Users\\Marcel-Laptop\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Repos\\Heissluftballoon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
+      "projectPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\GCS.csproj",
+      "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\marce\\Documents\\Git_repos\\Heissluftballon\\Software\\GUI\\Heissluftballon\\GCS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\Marcel-Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marce\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -109,6 +169,10 @@
     "frameworks": {
       "net472": {
         "dependencies": {
+          "GMap.NET.Presentation": {
+            "target": "Package",
+            "version": "[1.7.5, )"
+          },
           "GMap.NET.WindowsForms": {
             "target": "Package",
             "version": "[1.7.5, )"

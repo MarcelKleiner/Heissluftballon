@@ -1,0 +1,11 @@
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\bin\Debug\netcoreapp2.1\tests.deps.json
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\bin\Debug\netcoreapp2.1\tests.runtimeconfig.json
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\bin\Debug\netcoreapp2.1\tests.runtimeconfig.dev.json
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\bin\Debug\netcoreapp2.1\tests.dll
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\bin\Debug\netcoreapp2.1\tests.pdb
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.csprojAssemblyReference.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.csproj.CoreCompileInputs.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.AssemblyInfoInputs.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.AssemblyInfo.cs
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.dll
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\tests\obj\Debug\netcoreapp2.1\tests.pdb

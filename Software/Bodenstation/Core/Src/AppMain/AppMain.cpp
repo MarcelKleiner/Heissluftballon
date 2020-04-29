@@ -60,10 +60,15 @@ void AppMain::mainProg() {
 				transmitData[counter] = rfm95.packetRssi();
 				HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
 
+			//---------------------add separator----------------------------
+
+			transmitData[counter] = '$';
+			transmitData[counter+1] = '!';
+
+
 			//---------------------read GCS GPS data----------------------------
 			char *gpsData = model.getGPS_GCS();
-
-			txOffset = counter;
+			txOffset = counter+2;
 
 			for (gpsCounter = 0; gpsCounter < GPS_DATA_SIZE; gpsCounter++) {
 				transmitData[txOffset] = gpsData[gpsCounter];

@@ -1,7 +1,11 @@
 ﻿
+using GMap.NET;
+using GMap.NET.WindowsForms;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
+using System.Collections.Generic;
+
 using System.Windows;
 using System.Windows.Media;
 
@@ -17,13 +21,27 @@ namespace GCS.HLB_UI
         LineSeries lsTempInside = new LineSeries();
         LineSeries lsPressure = new LineSeries();
 
+
+       // List<PointLatLng> pointlatlang = new List<PointLatLng>();
+
+        GMapOverlay overlayGCS = new GMapOverlay("routeGCS");
+        GMapOverlay overlayDevice = new GMapOverlay("routeDevice");
+        List<PointLatLng> pointsGCS = new List<PointLatLng>();
+        List<PointLatLng> pointsDevice = new List<PointLatLng>();
+        GMapRoute trackGCS;
+        GMapRoute trackDevice;
+
         int humidityCounter = 0;
         int tempInsideCounter = 0;
         int tempOutsideCounter = 0;
         int pressureCounter = 0;
         int altitudeCounter = 0;
 
-        Random r = new Random(); 
+        public enum TARGET
+        {
+            GCS,
+            DEVICE
+        };
 
         public HLBUI(MainWindow main)
         {
@@ -33,6 +51,23 @@ namespace GCS.HLB_UI
             initPressure();
             initTempInside();
             initTempOutside();
+            initGmap();
+        }
+
+
+        private void initGmap()
+        {
+            trackDevice = new GMapRoute(pointsDevice, "trackDevice");
+            trackGCS = new GMapRoute(pointsDevice, "trackGCS");
+
+            trackDevice.Stroke = new System.Drawing.Pen(System.Drawing.Brushes.Red, 3);
+            trackGCS.Stroke = new System.Drawing.Pen(System.Drawing.Brushes.Red, 3);
+
+            overlayDevice.Routes.Add(trackDevice);
+            overlayGCS.Routes.Add(trackGCS);
+            main.gmap.Overlays.Add(overlayDevice);
+            main.gmap.Overlays.Add(overlayGCS);
+
         }
 
         //---------------------Init Lineseries an cartesian charts-------------------------------
@@ -120,8 +155,6 @@ namespace GCS.HLB_UI
                     }
                     lsAltitude.Values.Add(newPoint);
                     main.ccAltitude.Update();
-                    main.gClimbRate.Value = 2;
-                    main.gGroundSpeed.Value = 15.4;
                 }));            
         }
 
@@ -202,9 +235,79 @@ namespace GCS.HLB_UI
             }));
         }
 
+        public void UpdateGroundSpeed(double speed)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                main.gGroundSpeed.Value = Math.Round(speed, 2);
+            }));      
+        }
+
+        public void UpdateClimbRate(double climbRate)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                main.gClimbRate.Value = Math.Round(climbRate, 2);
+            }));      
+        }
+
+        public void UpdateMap(double longitude, double latitude, TARGET target)
+        {
+            if(latitude != 0 && longitude != 0)
+            {
+                Application.Current.Dispatcher.Invoke(new Action(() =>
+                {
+
+                if (target == TARGET.DEVICE)
+                {
+                    trackDevice.Points.Add(new PointLatLng(latitude, longitude));
+                    if (main.cbDevice.IsChecked == true)
+                    {
+                            overlayDevice.IsVisibile = true;
+                    }
+                    else
+                    {
+                            overlayDevice.IsVisibile = false;
+                    }
+
+                    if (main.rbDevice.IsChecked == true)
+                    {
+                            main.gmap.Position = new PointLatLng(latitude, longitude);
+                    }
+                }
+                else if(target == TARGET.GCS)
+                {
+
+                    trackGCS.Points.Add(new PointLatLng(latitude, longitude));
+                    if (main.cbGCS.IsChecked == true)
+                    {
+                            overlayGCS.IsVisibile = true;
+                    }
+                    else
+                    {
+                            overlayGCS.IsVisibile = false;
+                    }
+                    if (main.rbGCS.IsChecked == true)
+                    {
+                            main.gmap.Position = new PointLatLng(latitude, longitude);
+                    }
+                }
+                }));
+            }
+
+        }
 
 
 
 
+
+        public void resetGraphic()
+        {
+            lsAltitude.Values.Clear();
+            lsPressure.Values.Clear();
+            lsHumidity.Values.Clear();
+            lsTempInside.Values.Clear();
+            lsTempOutside.Values.Clear();
+        }
     }
 }

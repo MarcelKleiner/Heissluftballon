@@ -16,47 +16,25 @@ namespace GCS
     /// </summary>
     public partial class MainWindow : Window
     {
-        HLBUI balloonControl;
+
         SerialPortHandler sPortHandler;
-        GCS.Model.Model_c model;
-
-
-
+        Model_c model;
         UIControl guiControl;
         Thread guiUpdate;
+        public GMap.NET.WindowsForms.GMapControl gmap;
+
         public MainWindow()
         {
             InitializeComponent();
-            this.model = new Model_c();
+            gmap = new GMap.NET.WindowsForms.GMapControl();
+            model = new Model_c();
             GmapControl mpaControl = new GmapControl(this);
             sPortHandler = new SerialPortHandler(this, model);
-            
-            balloonControl = new HLBUI(this);
-            guiControl = new UIControl(this, sPortHandler, model, balloonControl);
+            guiControl = new UIControl(this, sPortHandler, model);
 
-            guiUpdate = new Thread(guiControl.updateGui);
+            guiUpdate = new Thread(guiControl.UpdateGui);
             guiUpdate.Start();
-            /**Delete after end*/
-            balloonControl.UpdateHeight(10);
-            balloonControl.UpdateHeight(4);
-            balloonControl.UpdateHeight(6);
-            balloonControl.UpdateHeight(8);
-            balloonControl.UpdateHeight(9);
-
         }
-
-        private void addListener()
-        {
-         
-        }
-
-        
-        public TextBox getTxtCom()
-        {
-            return txtCMD;
-        }
-
-
   
     }
 

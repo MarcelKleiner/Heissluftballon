@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GCS.Model
 {
@@ -19,10 +15,10 @@ namespace GCS.Model
 
         //raw data from USB Port
 
-        public void setRawData(char[] rawData)
+        public void SetRawData(List<char> rawData)
         {
-            this.rawData.Clear();
-            this.rawData = rawData.ToList<char>();
+          //  this.rawData.Clear();
+            this.rawData = rawData;
         }
         public List<char> getRawData()
         {
@@ -30,45 +26,50 @@ namespace GCS.Model
         }
 
 
-        //GPS raw data
-        public void setGpsDeviceRaw(List<char> gpsList)
-        {
-            gpsDeviceRaw.Clear();
-            gpsDeviceRaw = gpsList;
-        }
-        public List<char> getGpsDeviceRaw()
-        {
-            return this.gpsDeviceRaw;
-        }
 
-        public void setGpsGCSRaw(List<char> gpsList)
-        {
-            gpsGCSRaw.Clear();
-            gpsGCSRaw = gpsList;
-        }
-        public List<char> getGpsGCSRaw()
-        {
-            return this.gpsGCSRaw;
-        }
-        //GPS Data
-        public int AltitudeDeivce { get; set; }
-        public double LongitudeDeivce { get; set; }
-        public double LatitudeDeivce { get; set; }
+
+        //GPS Data - Device
+        public double TimeDevice { get; set; }            //Zeit
+        public double AltitudeDevice { get; set; }         //Höhe
+        public double LongitudeDevice { get; set; }     //Längengrad
+        public double LatitudeDevice { get; set; }      //Breitengrad
+
+        public double TimeDevice_1 { get; set; }            //Zeit_1
+        public double AltitudeDevice_1 { get; set; }         //Höhe_1
+        public double LongitudeDevice_1 { get; set; }     //Längengrad_1
+        public double LatitudeDevice_1 { get; set; }      //Breitengrad_1
+        //GPS Data - GCS
+        public double TimeGCS { get; set; }            //Zeit
+        public double AltitudeGCS { get; set; }         //Höhe
+        public double LongitudeGCS { get; set; }       //Längengrad
+        public double LatitudeGCS { get; set; }        //Breitengrad
+
+        public double TimeGCS_1 { get; set; }            //Zeit_1
+        public double AltitudeGCS_1 { get; set; }         //Höhe_1
+        public double LongitudeGCS_1 { get; set; }       //Längengrad_1
+        public double LatitudeGCS_1 { get; set; }        //Breitengrad_1
+
+        // Distance / Speed
+
+        public double GroundSpeedDevice { get; set; }
+        public double ClimbRateDevice { get; set; }
+
+        public double GroundSpeedGCS { get; set; }
+
+        public double AltitudeDiff { get; set; }
+        public double Distance { get; set; }
 
         //Sensor Data
-        public uint humidityRaw { get; set; }
-        public int tempInsideRaw { get; set; }
-        public int tempOutsideRaw { get; set; }
-        public uint pressureRaw { get; set; }
+        public uint HumidityRaw { get; set; }
+        public int TempInsideRaw { get; set; }
+        public int TempOutsideRaw { get; set; }
+        public uint PressureRaw { get; set; }
 
-        public double humidity { get; set; }
-        public double tempInside { get; set; }
-        public double tempOutside { get; set; }
-        public int pressure { get; set; }
+        public double Humidity { get; set; }
+        public double TempInside { get; set; }
+        public double TempOutside { get; set; }
+        public int Pressure { get; set; }
 
-        //Speed Data
-        public int GroundSpeed { get; set; }
-        public int ClimbRate { get; set; }
 
 
 
