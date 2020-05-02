@@ -154,7 +154,7 @@ namespace GCS.SerialPort
         /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            if(connectionFailCounter > 10)
+            if(connectionFailCounter > 30)
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
@@ -168,7 +168,7 @@ namespace GCS.SerialPort
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    main.txtCMD.AppendText(" \r\n target is not responding...");
+                    main.txtCMD.AppendText(" \r\n target is not responding...\n");
                 }));
                 connectionFailCounter++;
             }
@@ -262,6 +262,7 @@ namespace GCS.SerialPort
                                 {
                                     model.SetRawData(rawString);
                                     OnMsgReceived();
+                                    connectionFailCounter = 0;
                                     Application.Current.Dispatcher.Invoke(new Action(() =>
                                     {
                                         main.txtCMD.AppendText("Data receive" + packetCounter + "\n");
@@ -287,7 +288,6 @@ namespace GCS.SerialPort
             {
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                  //  main.txtCMD.AppendText("Packet error");
                     main.txtCMD.AppendText(ex.ToString());
                 }));
             }
@@ -301,7 +301,7 @@ namespace GCS.SerialPort
             connectionTimer.Stop();     //restart Timer
             connectionTimer.Start();
             Application.Current.Dispatcher.Invoke(new Action(() =>{
-                main.lblConnStatus.Content = "COM" + sPort.PortName;
+                main.lblConnStatus.Content = sPort.PortName;
                 main.lblConnStatus.Background = Brushes.Green;
             }));
 

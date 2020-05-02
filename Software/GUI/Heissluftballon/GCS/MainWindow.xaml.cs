@@ -19,6 +19,7 @@ namespace GCS
 
         SerialPortHandler sPortHandler;
         Model_c model;
+        Logger logger;
         UIControl guiControl;
         Thread guiUpdate;
         public GMap.NET.WindowsForms.GMapControl gmap;
@@ -28,6 +29,7 @@ namespace GCS
             InitializeComponent();
             gmap = new GMap.NET.WindowsForms.GMapControl();
             model = new Model_c();
+            logger = new Logger(model);
             GmapControl mpaControl = new GmapControl(this);
             sPortHandler = new SerialPortHandler(this, model);
             guiControl = new UIControl(this, sPortHandler, model);
@@ -35,7 +37,11 @@ namespace GCS
             guiUpdate = new Thread(guiControl.UpdateGui);
             guiUpdate.Start();
         }
-  
+
+        private void CmdLog_Click(object sender, RoutedEventArgs e)
+        {
+            logger.logg();
+        }
     }
 
 

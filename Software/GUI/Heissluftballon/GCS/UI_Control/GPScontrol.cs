@@ -1,6 +1,7 @@
 ﻿using GCS.Model;
 using System;
 using GCS.UI_Control;
+using System.Windows;
 
 namespace GCS.UI_Control
 {
@@ -39,14 +40,15 @@ namespace GCS.UI_Control
                         model.LatitudeGCS = LatitudeConverter(splittedGPS[2]);
                         model.LongitudeGCS = LongitudeConverter(splittedGPS[4]);
                         model.AltitudeGCS = Convert.ToDouble(splittedGPS[9]);
-                        control.writeTxt("GCS GPS received - GPGGA");
+                        control.WriteTxt("GCS GPS received - GPGGA");
+                        
                         break;
                     case GPS_TARGET.DEVICE:
                         model.TimeDevice = Convert.ToDouble(splittedGPS[1]);
                         model.LatitudeDevice = LatitudeConverter(splittedGPS[2]);
                         model.LongitudeDevice = LongitudeConverter(splittedGPS[4]);
                         model.AltitudeDevice = Convert.ToDouble(splittedGPS[9]);
-                        control.writeTxt("Device GPS received - GPGGA");
+                        control.WriteTxt("Device GPS received - GPGGA");
                         break;
                     default:
                         break;
@@ -60,13 +62,13 @@ namespace GCS.UI_Control
                         model.TimeGCS = Convert.ToDouble(splittedGPS[1]);
                         model.LatitudeGCS = LatitudeConverter(splittedGPS[3]);
                         model.LongitudeGCS = LongitudeConverter(splittedGPS[5]);
-                        control.writeTxt("GCS GPS received - GPRMC");
+                        control.WriteTxt("GCS GPS received - GPRMC");
                         break;
                     case GPS_TARGET.DEVICE:
                         model.TimeDevice = Convert.ToDouble(splittedGPS[1]);
                         model.LatitudeDevice = LatitudeConverter(splittedGPS[3]);
                         model.LongitudeDevice = LongitudeConverter(splittedGPS[5]);
-                        control.writeTxt("Device GPS received - GPRMC");
+                        control.WriteTxt("Device GPS received - GPRMC");
                         break;
                     default:
                         break;

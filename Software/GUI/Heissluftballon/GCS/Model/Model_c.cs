@@ -6,8 +6,8 @@ namespace GCS.Model
     {
         private List<char> rawData = new List<char>();
 
-        private List<char> gpsDeviceRaw = new List<char>();
-        private List<char> gpsGCSRaw = new List<char>();
+       // private List<string> logger = new List<string>();
+        private List<string> logger = new List<string>();
         public Model_c()
         {
 
@@ -23,6 +23,11 @@ namespace GCS.Model
         public List<char> getRawData()
         {
             return this.rawData;
+        }
+
+        public List<string> getLogger()
+        {
+            return this.logger;
         }
 
 
@@ -61,7 +66,7 @@ namespace GCS.Model
 
         //Sensor Data
         public uint HumidityRaw { get; set; }
-        public int TempInsideRaw { get; set; }
+        public double TempInsideRaw { get; set; }
         public int TempOutsideRaw { get; set; }
         public uint PressureRaw { get; set; }
 

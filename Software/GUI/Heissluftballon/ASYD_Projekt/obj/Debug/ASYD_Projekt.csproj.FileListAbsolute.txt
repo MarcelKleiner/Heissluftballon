@@ -1,0 +1,15 @@
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\bin\Debug\ASYD_Projekt.exe.config
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\bin\Debug\ASYD_Projekt.exe
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\bin\Debug\ASYD_Projekt.pdb
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.csprojAssemblyReference.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\MainWindow.g.cs
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\App.g.cs
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt_MarkupCompile.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt_MarkupCompile.lref
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\MainWindow.baml
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.g.resources
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.Properties.Resources.resources
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.csproj.GenerateResource.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.csproj.CoreCompileInputs.cache
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.exe
+C:\Users\marce\Documents\Git_repos\Heissluftballon\Software\GUI\Heissluftballon\ASYD_Projekt\obj\Debug\ASYD_Projekt.pdb

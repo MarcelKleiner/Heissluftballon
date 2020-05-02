@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Logger.cs" />
     <Compile Include="Model\Model_c.cs" />
     <Compile Include="SerialPort\SerialPortHandler.cs" />
     <Compile Include="UI_Control\Control.cs" />

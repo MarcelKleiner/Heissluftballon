@@ -61,7 +61,7 @@ namespace GCS.HLB_UI
             trackGCS = new GMapRoute(pointsDevice, "trackGCS");
 
             trackDevice.Stroke = new System.Drawing.Pen(System.Drawing.Brushes.Red, 3);
-            trackGCS.Stroke = new System.Drawing.Pen(System.Drawing.Brushes.Red, 3);
+            trackGCS.Stroke = new System.Drawing.Pen(System.Drawing.Brushes.Green, 3);
 
             overlayDevice.Routes.Add(trackDevice);
             overlayGCS.Routes.Add(trackGCS);

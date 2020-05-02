@@ -79,7 +79,7 @@ void GPS::gpsInterrupt(uint8_t rxData) {
 					copyCounter++;
 				}
 			}
-			model->setGPS_Device(GPS_Data);	//set GPS data in Model
+			model->setGPS_GCS(GPS_Data);	//set GPS data in Model
 			for (int count = 0; count < GPS_DATA_SIZE; count++) {
 				data[count] = '0';
 			}

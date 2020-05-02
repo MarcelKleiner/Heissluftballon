@@ -94,11 +94,12 @@
                         <Label x:Name="lblConnStatus" Content="Connectino Lost" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Red"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2" Background="White">
-                        <Label x:Name="lblGPSGCS" Content="GPS ON" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FF00FF74"/>
+                        <Label x:Name="lblGPSGCS" Content="GPS ON" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFD7DCE3"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="3" Background="White">
-                        <Label x:Name="lblGPSTarget" Content="GPS OFF" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Red"/>
+                        <Label x:Name="lblGPSTarget" Content="GPS OFF" Margin="0,2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFD7DCE3"/>
                     </Grid>
+                    <Button x:Name="cmdLog" Content="Log" Grid.Column="1" HorizontalAlignment="Center" Height="28" Margin="0" Grid.Row="4" VerticalAlignment="Center" Width="90" Click="CmdLog_Click"/>
                 </Grid>
             </Grid>
             <WindowsFormsHost x:Name="winFormHost" Margin="0"/>

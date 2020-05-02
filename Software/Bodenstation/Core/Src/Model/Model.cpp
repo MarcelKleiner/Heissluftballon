@@ -24,7 +24,7 @@ Model::Model() {
 //get/set GPS_GCS Data
 void Model::Model::setGPS_GCS(char* data){
 	//not implemented in Device
-	//strncpy(gpsGCS, data, GPS_DATA_SIZE);
+	strncpy(gpsGCS, data, GPS_DATA_SIZE);
 }
 char* Model::getGPS_GCS(void){
 	//not implemented in Device

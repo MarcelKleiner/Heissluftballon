@@ -4,6 +4,7 @@ using GCS.HLB_UI;
 using GCS.Model;
 using GCS.SerialPort;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -18,13 +19,6 @@ namespace GCS.UI_Control
 
         string rawString;
 
-        string gpsFormat;
-
-        double time = 0;
-        double latitude = 0;    //Breitengrad
-        double longitude = 0;   //Längengrad
-        double altitude = 0;    //höhe über Meer
-
 
         //----------------
         readonly MainWindow main;
@@ -32,8 +26,9 @@ namespace GCS.UI_Control
         readonly Model_c model;
         readonly HLBUI deviceGui;
         readonly GCSUI gcsGui;
-        GPScontrol gpsCtrl;
+        readonly GPScontrol gpsCtrl;
 
+        int timeCounter = 0;
         bool update = false;
         public UIControl(MainWindow main, SerialPortHandler sPortHandler, Model_c model)
         {
@@ -46,6 +41,7 @@ namespace GCS.UI_Control
             gpsCtrl = new GPScontrol(model, this);
             AddListener();
             ResetGraphic();
+          //  initLogger();
         }
 
         private void AddListener()
@@ -61,6 +57,24 @@ namespace GCS.UI_Control
             gcsGui.UpdateGroundSpeed(0);
             gcsGui.UpdateDistanceDiff(0);
             gcsGui.UpdateAltitudeDiff(0);
+        }
+
+        private void initLogger()
+        {
+            model.getLogger().Add("DateTimeNow;");
+            model.getLogger().Add("Pressure;");
+            model.getLogger().Add("TempInside;");
+            model.getLogger().Add("TempOutside;");
+            model.getLogger().Add("Humidity;");
+            model.getLogger().Add("Time Device;");
+            model.getLogger().Add("Latitude Device;");
+            model.getLogger().Add("Longitude Device;");
+            model.getLogger().Add("Altitude Device;");
+            model.getLogger().Add("Time GCS;");
+            model.getLogger().Add("Latitude GCS;");
+            model.getLogger().Add("Longitude GCS;");
+            model.getLogger().Add("Altitude GCS");
+            
         }
 
         private void CalculateData(object sender)
@@ -121,20 +135,62 @@ namespace GCS.UI_Control
         private void UpdateModelData()
         {
             model.Pressure = Convert.ToInt32(((double)(model.PressureRaw) - (-1566.6)) / 3.498);
-            model.TempInside = (((((double)model.TempInsideRaw * 390 / 32768) / 100) - 1));
+            model.TempInsideRaw = (double)model.TempInsideRaw / 5;
+            model.TempInside = (((((double)model.TempInsideRaw * 430 / 32768) / 100) - 1)/0.003851);
             model.TempOutside = -46.85 + 175.75 * ((double)model.TempOutsideRaw / 65536);
             model.Humidity = -6 + 125 * ((double)model.HumidityRaw / 65536);
 
+            if(timeCounter == 0)
+            {
             //update old GPS data
-            model.TimeDevice_1 = model.TimeDevice;
-            model.LatitudeDevice_1 = model.LatitudeDevice;
-            model.LongitudeDevice_1 = model.LongitudeDevice;
-            model.AltitudeDevice_1 = model.AltitudeDevice;
+                model.TimeDevice_1 = model.TimeDevice;
+                model.LatitudeDevice_1 = model.LatitudeDevice;
+                model.LongitudeDevice_1 = model.LongitudeDevice;
+                model.AltitudeDevice_1 = model.AltitudeDevice;
 
-            model.TimeGCS_1 = model.TimeGCS;
-            model.LatitudeGCS_1 = model.LatitudeGCS;
-            model.LongitudeGCS_1 = model.LongitudeGCS;
-            model.AltitudeGCS_1 = model.AltitudeGCS;
+                model.TimeGCS_1 = model.TimeGCS;
+                model.LatitudeGCS_1 = model.LatitudeGCS;
+                model.LongitudeGCS_1 = model.LongitudeGCS;
+                model.AltitudeGCS_1 = model.AltitudeGCS;
+
+                //Add datat to Logger
+                model.getLogger().Add(DateTime.Now.ToString());
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.Pressure));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.TempInside));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.TempOutside));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.Humidity));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.TimeDevice));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.LatitudeDevice));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.LongitudeDevice));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.AltitudeDevice));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.TimeGCS));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.LatitudeGCS));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.LongitudeGCS));
+                model.getLogger().Add(";");
+                model.getLogger().Add(Convert.ToString(model.AltitudeGCS));
+                model.getLogger().Add("\n");
+
+            timeCounter++;
+            }
+            else
+            {
+                timeCounter++;
+                if (timeCounter > 5)
+                {
+                    timeCounter = 0;
+                }
+            }
         }
         
 
@@ -163,7 +219,7 @@ namespace GCS.UI_Control
  
                     update = false;
                 }
-                Thread.Sleep(500);
+               Thread.Sleep(500);
             }
         }
 
@@ -172,7 +228,7 @@ namespace GCS.UI_Control
             deviceGui.resetGraphic();
         }
 
-        public void writeTxt(string txt)
+        public void WriteTxt(string txt)
         {
 
             Application.Current.Dispatcher.Invoke(new Action(() =>
